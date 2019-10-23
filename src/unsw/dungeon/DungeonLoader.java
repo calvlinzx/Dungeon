@@ -61,6 +61,56 @@ public abstract class DungeonLoader {
             entity = wall;
             break;
         // TODO Handle other possible entities
+        case "switch":
+        	FloorSwitch floorswitch = new FloorSwitch(x, y);
+        	onLoad(floorswitch);
+        	entity = floorswitch;
+        	break;
+        case "boulder":
+        	Boulder boulder = new Boulder(x, y);
+        	onLoad(boulder);
+        	entity = boulder;
+        	break;
+        case "exit":
+        	Exit exit = new Exit(x, y);
+        	onLoad(exit);
+        	entity = exit;
+        	break;
+        case "enemy":
+        	Enemy enemy = new Enemy(x, y);
+        	onLoad(enemy);
+        	entity = enemy;
+        	break;
+        case "key":
+        	Key key = new Key(x, y);
+        	onLoad(key);
+        	entity = key;
+        	break;
+        case "portal":
+        	Portal portal = new Portal(x, y);
+        	onLoad(portal);
+        	entity = portal;
+        	break;
+        case "sword":
+        	Sword sword = new Sword(x, y);
+        	onLoad(sword);
+        	entity = sword;
+        	break;
+        case "treasure":
+        	Treasure treasure = new Treasure(x, y);
+        	onLoad(treasure);
+        	entity = treasure;
+        	break;
+        case "invincibility":
+        	Invincibility invincibility = new Invincibility(x, y);
+        	onLoad(invincibility);
+        	entity = invincibility;
+        	break;
+        case "door":
+        	Door door = new Door(x, y);
+        	onLoad(door);
+        	entity = door;
+        	break;
         }
         dungeon.addEntity(entity);
     }
@@ -68,7 +118,25 @@ public abstract class DungeonLoader {
     public abstract void onLoad(Entity player);
 
     public abstract void onLoad(Wall wall);
+    
+    public abstract void onLoad(FloorSwitch floorswitch);
+    
+    public abstract void onLoad(Boulder boulder);
+    
+    public abstract void onLoad(Exit exit);
 
     // TODO Create additional abstract methods for the other entities
+    public abstract void onLoad(Enemy enemy);
+    
+    public abstract void onLoad(Key key);
+    
+    public abstract void onLoad(Portal portal);
+    
+    public abstract void onLoad(Sword sword);
+    
+    public abstract void onLoad(Treasure treasure);
+    
+    public abstract void onLoad(Invincibility invincibility);
 
+    public abstract void onLoad(Door door);
 }
