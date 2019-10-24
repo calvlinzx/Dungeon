@@ -12,25 +12,7 @@ import javafx.stage.Stage;
 
 public class HomepageController {
 	@FXML
-	private Button level1;
-	@FXML
-	private Button level2;
-	@FXML
-	private Button level3;
-	@FXML
-	private Button level4;
-	@FXML
-	private Button level5;
-	@FXML
-	private Button level6;
-	@FXML
-	private Button level7;
-	@FXML
-	private Button level8;
-	@FXML
-	private Button level9;
-	@FXML
-	private Button level10;
+	private Button level1, level2, level3, level4, level5, level6, level7, level8, level9, level10;
 
 	@FXML
 	void go2level1(ActionEvent event) throws IOException {

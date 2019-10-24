@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +24,8 @@ import javafx.stage.Stage;
  */
 public class DungeonController {
 
+    @FXML
+    private Pane moving;
     @FXML
     private GridPane squares;
 
@@ -57,6 +60,7 @@ public class DungeonController {
         primaryStage.show();
 	}
 
+    
 	@FXML
     public void initialize() {
         Image ground = new Image("/dirt_0_new.png");
@@ -72,7 +76,7 @@ public class DungeonController {
             squares.getChildren().add(entity);
 
     }
-
+	
     @FXML
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
