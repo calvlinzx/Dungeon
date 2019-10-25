@@ -42,6 +42,7 @@ public class DungeonController {
         this.dungeon = dungeon;
         this.player = dungeon.getPlayer();
         this.initialEntities = new ArrayList<>(initialEntities);
+        dungeon.setEnemyObserver();
     }
     
     @FXML
@@ -93,7 +94,14 @@ public class DungeonController {
 			   node.getId().equals("invincibility")) {
 				squares.getChildren().remove(node);
 			}
+			if(node.getId().equals("enemy") && player.battleEnemy()) {
+				squares.getChildren().remove(node);
+			}
 		}
+	}
+	
+	public void playerActs() {
+		player.pickUp();
 	}
 	
     @FXML
@@ -102,29 +110,29 @@ public class DungeonController {
         case UP:
         	if(dungeon.canGoThere(player.getX(), player.getY()-1)) {
         		player.moveUp();
-        		player.pickUp();
+        		playerActs();
         		doThings2node(player.getX(), player.getY());
         	}
         	break;
         case DOWN:
         	if(dungeon.canGoThere(player.getX(), player.getY()+1)) {
         		player.moveDown();
-        		player.pickUp();
+        		playerActs();
         		doThings2node(player.getX(), player.getY());
         	}
         	break;
         case LEFT:
         	if(dungeon.canGoThere(player.getX()-1, player.getY())) {
         		player.moveLeft();
-        		player.pickUp();
+        		playerActs();
         		doThings2node(player.getX(), player.getY());
         	}
             break;
         case RIGHT:
         	if(dungeon.canGoThere(player.getX()+1, player.getY())){
         		player.moveRight();
-        	    player.pickUp();
-        	    doThings2node(player.getX(), player.getY());
+        		playerActs();
+        		doThings2node(player.getX(), player.getY());
         	}
             break;
         default:

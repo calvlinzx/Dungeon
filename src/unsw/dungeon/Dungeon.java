@@ -48,9 +48,17 @@ public class Dungeon {
         entities.add(entity);
     }
     
+    public void setEnemyObserver() {
+    	for (Entity e : entities) {
+    		if(e instanceof Enemy) {
+    			player.registerEnemyObserver((Enemy) e);
+    		}
+    	}
+    }
+    
     public Entity findEntity(int x, int y) {
     	for (Entity e : entities) {
-    		if (e.getX() == x && e.getY() == y) {
+    		if (e.getX() == x && e.getY() == y && !(e instanceof Player)) {
     			return e;
     		}
     	}
