@@ -14,6 +14,7 @@ public class Player extends Entity implements SubjectEnemy{
     private List<Entity> pickups;
     private PickupStrategy pstrategy;
     private List<ObserverEnemy> enemyObservers;
+    private UsePropStrategy useProp;
     
 
     /**
@@ -48,8 +49,12 @@ public class Player extends Entity implements SubjectEnemy{
             x().set(getX() + 1);
     }
     
-    public void setStrategy(PickupStrategy pstrategy){
+    public void setPickupStrategy(PickupStrategy pstrategy){
     	this.pstrategy = pstrategy;
+    }
+    
+    public void setUsePropStrategy(UsePropStrategy useProp) {
+    	this.useProp = useProp;
     }
     
     public List<Entity> getPickups(){
@@ -59,13 +64,13 @@ public class Player extends Entity implements SubjectEnemy{
     public Entity meetEntity() {
     	Entity entity = dungeon.findEntity(getX(), getY());
     	if(entity instanceof Key) {
-    		setStrategy(new PickupKey());
+    		setPickupStrategy(new PickupKey());
     	}else if(entity instanceof Sword) {
-    		setStrategy(new PickupSword());
+    		setPickupStrategy(new PickupSword());
     	}else if(entity instanceof Treasure) {
-    		setStrategy(new PickupTreasure());
+    		setPickupStrategy(new PickupTreasure());
     	}else if(entity instanceof Invincibility) {
-    		setStrategy(new PickupInvincibility());
+    		setPickupStrategy(new PickupInvincibility());
     	}
     	return entity;
     }
@@ -88,11 +93,23 @@ public class Player extends Entity implements SubjectEnemy{
     	}
     }
     
+    public Entity findSword2use() {
+    	for(Entity e : pickups) {
+    		if (e instanceof Sword && ((Sword) e).getHits() > 0)
+    			return e;
+    	}
+    	return null;
+    }
+    
     public boolean battleEnemy() {
     	Entity enemy = meetEntity();
     	if(enemy != null && enemy instanceof Enemy) {
 	    	boolean ret =  ((Enemy) enemy).meetPlayer();
 	    	if (ret) {
+	    		if(! hasInvincibility()) {
+		    		setUsePropStrategy(new UseSword());
+		    		useProp.useProp(this, findSword2use());
+	    		}
 	    		dungeon.removeEntity(enemy);
 	    		return ret;
 	    	}else {
@@ -100,6 +117,15 @@ public class Player extends Entity implements SubjectEnemy{
 	    	}
     	}
     	return false;
+    }
+    
+    public void useInvincibility() {
+    	if(hasInvincibility()) {
+    		Entity potion = findInvincibility2use();
+    		setUsePropStrategy(new UseInvincibility());
+    		useProp.useProp(this, potion);
+    		dungeon.removeEntity(potion);
+    	}
     }
 
 	@Override
@@ -116,11 +142,26 @@ public class Player extends Entity implements SubjectEnemy{
 		
 	}
 	
-	public boolean hasSword() {
+	public Entity findInvincibility2use() {
 		for (Entity e : pickups) {
-			if (e instanceof Sword) {
-				return true;
+			if (e instanceof Invincibility) {
+				if(((Invincibility) e).getIsValid())
+					return e;
 			}
+		}
+		return null;
+	}
+	
+	public boolean hasInvincibility() {
+		if (findInvincibility2use() != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hasSword() {
+		if(findSword2use() != null) {
+			return true;
 		}
 		return false;
 	}
@@ -128,7 +169,7 @@ public class Player extends Entity implements SubjectEnemy{
 	@Override
 	public void notifyEnemy() {
 		for (ObserverEnemy o : enemyObservers) {
-            o.update(getX(), getY(), hasSword());
+            o.update(getX(), getY(), hasSword(), hasInvincibility());
         }
 	}
 }

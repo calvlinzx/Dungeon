@@ -93,6 +93,9 @@ public class DungeonController {
 			if(node.getId().equals("sword") || node.getId().equals("treasure") || node.getId().equals("key") ||
 			   node.getId().equals("invincibility")) {
 				squares.getChildren().remove(node);
+				if(node.getId().equals("invincibility")) {
+					player.useInvincibility();
+				}
 			}
 			if(node.getId().equals("enemy") && player.battleEnemy()) {
 				squares.getChildren().remove(node);

@@ -14,15 +14,27 @@ public class Enemy extends Entity implements ObserverEnemy{
 	}
 
 	@Override
-	public void update(int x, int y, boolean hasSword) {
-		approachPlayer(x, y);
-		if (hasSword) {
+	public void update(int x, int y, boolean hasSword, boolean hasInvincibility) {
+		if (hasSword && !hasInvincibility) {
+			approachPlayer(x, y);
 			playerHasSword();
+		}
+		if(hasInvincibility) {
+			runAway();
+			playerHasInvincibility();
+		}
+		if(!hasSword && !hasInvincibility) {
+			approachPlayer(x, y);
+			playerHasNoSword();
 		}
 	}
 	
 	private void approachPlayer(int x, int y) {
-		
+		System.out.println("approaching player");
+	}
+	
+	public void runAway() {
+		System.out.println("run away from player");
 	}
 	
 	public void playerHasSword() {
@@ -31,6 +43,10 @@ public class Enemy extends Entity implements ObserverEnemy{
 	
 	public void playerHasNoSword() {
 		this.state = cannotBeKilled;
+	}
+	
+	public void playerHasInvincibility() {
+		this.state = canBeKilled;
 	}
 	
 	public boolean meetPlayer() {
