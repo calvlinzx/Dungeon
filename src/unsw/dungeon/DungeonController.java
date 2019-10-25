@@ -43,6 +43,7 @@ public class DungeonController {
         this.player = dungeon.getPlayer();
         this.initialEntities = new ArrayList<>(initialEntities);
         dungeon.setEnemyObserver();
+        dungeon.setDoorObserver();
     }
     
     @FXML

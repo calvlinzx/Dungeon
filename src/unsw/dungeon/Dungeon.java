@@ -56,6 +56,14 @@ public class Dungeon {
     	}
     }
     
+    public void setDoorObserver() {
+    	for (Entity e : entities) {
+    		if(e instanceof Door) {
+    			player.registerDoorObserver((Door) e);
+    		}
+    	}
+    }
+    
     public Entity findEntity(int x, int y) {
     	for (Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && !(e instanceof Player)) {

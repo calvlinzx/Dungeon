@@ -8,13 +8,14 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class Player extends Entity implements SubjectEnemy{
+public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 
     private Dungeon dungeon;
     private List<Entity> pickups;
     private PickupStrategy pstrategy;
     private List<ObserverEnemy> enemyObservers;
     private UsePropStrategy useProp;
+    private List<ObserverDoor> doorObservers;
     
 
     /**
@@ -27,6 +28,7 @@ public class Player extends Entity implements SubjectEnemy{
         this.dungeon = dungeon;
         this.pickups = new ArrayList<>();
         this.enemyObservers = new ArrayList<>();
+        this.doorObservers = new ArrayList<>();
     }
 
     public void moveUp() {
@@ -93,6 +95,7 @@ public class Player extends Entity implements SubjectEnemy{
     	}
     }
     
+    
     public Entity findSword2use() {
     	for(Entity e : pickups) {
     		if (e instanceof Sword && ((Sword) e).getHits() > 0)
@@ -117,6 +120,19 @@ public class Player extends Entity implements SubjectEnemy{
 	    	}
     	}
     	return false;
+    }
+    
+    public boolean openDoor() {
+    	Entity door = meetEntity();
+    	if(door != null && door instanceof Door) {
+    		boolean ret = ((Door)door).open();
+    		setUsePropStrategy(new UseKey());
+    		useProp.useProp(this, findKey2use());
+    		dungeon.removeEntity(door);
+    		return ret;
+    	}
+    	return false;
+    	
     }
     
     public void useInvincibility() {
@@ -171,5 +187,43 @@ public class Player extends Entity implements SubjectEnemy{
 		for (ObserverEnemy o : enemyObservers) {
             o.update(getX(), getY(), hasSword(), hasInvincibility());
         }
+	}
+
+	@Override
+	public void registerDoorObserver(ObserverDoor o) {
+		doorObservers.add(o);
+		
+	}
+
+	@Override
+	public void removeDoorObserver(ObserverDoor o) {
+		int i = doorObservers.indexOf(o);
+        if (i >= 0) {
+            doorObservers.remove(i);
+        }
+	}
+
+	@Override
+	public void notifyDoor() {
+		for (ObserverDoor o : doorObservers) {
+            o.update(hasKey());
+        }
+	}
+
+	private boolean hasKey() {
+		if(findKey2use() != null) {
+			return true;
+		}
+		return false;
+	}
+
+	private Entity findKey2use() {
+		for (Entity e : pickups) {
+			if (e instanceof Key) {
+				if(((Key) e).getCanUse())
+					return e;
+			}
+		}
+		return null;
 	}
 }
