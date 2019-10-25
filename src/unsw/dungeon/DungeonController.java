@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -65,36 +66,66 @@ public class DungeonController {
     public void initialize() {
         Image ground = new Image("/dirt_0_new.png");
 
-        // Add the ground first so it is below all other entities
-        for (int x = 0; x < dungeon.getWidth(); x++) {
-            for (int y = 0; y < dungeon.getHeight(); y++) {
-                squares.add(new ImageView(ground), x, y);
-            }
-        }
-
+       // Add the ground first so it is below all other entities
+       // for (int x = 0; x < dungeon.getWidth(); x++) {
+       //     for (int y = 0; y < dungeon.getHeight(); y++) {
+       //         squares.add(new ImageView(ground), x, y);
+       //     }
+       // }
         for (ImageView entity : initialEntities)
             squares.getChildren().add(entity);
-
     }
+	
+	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+	    for (Node node : gridPane.getChildren()) {
+	        if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+	        	if(! node.getId().equals("player"))
+	        		return node;
+	        }
+	    }
+	    return null;
+	}
+	
+	private void doThings2node(int x, int y) {
+		Node node = getNodeFromGridPane(squares, x, y);
+		if(node != null) {
+			if(node.getId().equals("sword") || node.getId().equals("treasure") || node.getId().equals("key") ||
+			   node.getId().equals("invincibility")) {
+				squares.getChildren().remove(node);
+			}
+		}
+	}
 	
     @FXML
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
         case UP:
-        	if(dungeon.canGoThere(player.getX(), player.getY()-1))
+        	if(dungeon.canGoThere(player.getX(), player.getY()-1)) {
         		player.moveUp();
-            break;
+        		player.pickUp();
+        		doThings2node(player.getX(), player.getY());
+        	}
+        	break;
         case DOWN:
-        	if(dungeon.canGoThere(player.getX(), player.getY()+1))
+        	if(dungeon.canGoThere(player.getX(), player.getY()+1)) {
         		player.moveDown();
-            break;
+        		player.pickUp();
+        		doThings2node(player.getX(), player.getY());
+        	}
+        	break;
         case LEFT:
-        	if(dungeon.canGoThere(player.getX()-1, player.getY()))
+        	if(dungeon.canGoThere(player.getX()-1, player.getY())) {
         		player.moveLeft();
+        		player.pickUp();
+        		doThings2node(player.getX(), player.getY());
+        	}
             break;
         case RIGHT:
-        	if(dungeon.canGoThere(player.getX()+1, player.getY()))
+        	if(dungeon.canGoThere(player.getX()+1, player.getY())){
         		player.moveRight();
+        	    player.pickUp();
+        	    doThings2node(player.getX(), player.getY());
+        	}
             break;
         default:
             break;

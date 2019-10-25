@@ -56,39 +56,42 @@ public class DungeonControllerLoader extends DungeonLoader {
     @Override
     public void onLoad(Entity player) {
         ImageView view = new ImageView(playerImage);
+        view.setId("player");
         addEntity(player, view);
     }
 
     @Override
     public void onLoad(Wall wall) {
         ImageView view = new ImageView(wallImage);
+        view.setId("wall");
         addEntity(wall, view);
     }
     
-    
-
     @Override
 	public void onLoad(FloorSwitch floorswitch) {
     	ImageView view = new ImageView(switchImage);
+    	view.setId("floorswitch");
         addEntity(floorswitch, view);
-		
 	}
 
 	@Override
 	public void onLoad(Boulder boulder) {
 		ImageView view = new ImageView(boulderImage);
+		view.setId("boulder");
         addEntity(boulder, view);		
 	}
 
 	@Override
 	public void onLoad(Exit exit) {
 		ImageView view = new ImageView(exitImage);
+		view.setId("exit");
         addEntity(exit, view);
 	}
 
 	@Override
 	public void onLoad(Enemy enemy) {
 		ImageView view = new ImageView(enemyImage);
+		view.setId("enemy");
         addEntity(enemy, view);
 		
 	}
@@ -96,36 +99,42 @@ public class DungeonControllerLoader extends DungeonLoader {
 	@Override
 	public void onLoad(Key key) {
 		ImageView view = new ImageView(keyImage);
+		view.setId("key");
         addEntity(key, view);
 	}
 
 	@Override
 	public void onLoad(Portal portal) {
 		ImageView view = new ImageView(portalImage);
+		view.setId("portal");
         addEntity(portal, view);
 	}
 
 	@Override
 	public void onLoad(Sword sword) {
 		ImageView view = new ImageView(swordImage);
+		view.setId("sword");
         addEntity(sword, view);
 	}
 
 	@Override
 	public void onLoad(Treasure treasure) {
 		ImageView view = new ImageView(treasureImage);
+		view.setId("treasure");
         addEntity(treasure, view);
 	}
 
 	@Override
 	public void onLoad(Invincibility invincibility) {
 		ImageView view = new ImageView(invincibilityImage);
+		view.setId("invincibility");
         addEntity(invincibility, view);		
 	}
 
 	@Override
 	public void onLoad(Door door) {
 		ImageView view = new ImageView(doorImage);
+		view.setId("door");
         addEntity(door, view);		
 	}
 

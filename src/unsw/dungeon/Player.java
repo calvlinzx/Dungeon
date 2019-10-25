@@ -38,4 +38,15 @@ public class Player extends Entity {
         if (getX() < dungeon.getWidth() - 1)
             x().set(getX() + 1);
     }
+    
+    public Entity meetEntity() {
+    	return dungeon.findEntity(getX(), getY());
+    }
+    
+    public void pickUp() {
+    	Entity entity = meetEntity();
+    	if (entity != null && !(entity instanceof Player)) {
+    		dungeon.removeEntity(meetEntity());
+    	}
+    }
 }

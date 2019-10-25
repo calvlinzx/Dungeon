@@ -57,6 +57,10 @@ public class Dungeon {
     	return null;
     }
     
+    public void removeEntity(Entity entity) {
+    	entities.remove(entity);
+    }
+    
     public boolean canGoThere(int x, int y) {
 		if(findEntity(x, y) instanceof Wall) {
 			return false;
