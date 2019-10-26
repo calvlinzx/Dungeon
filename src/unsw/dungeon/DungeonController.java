@@ -109,6 +109,9 @@ public class DungeonController {
 				squares.add(view, x, y);
 			}
 		}
+		if(dungeon.checkSwitch()) {
+			System.out.println("all switch on");
+		}
 	}
 	
 	

@@ -73,8 +73,52 @@ public class Dungeon {
     	return null;
     }
     
+    public Entity findSwitch(int x, int y) {
+    	for(Entity e : entities) {
+    		if (e.getX() == x && e.getY() == y && e instanceof FloorSwitch) {
+    			return e;
+    		}
+    	}
+    	return null;
+    }
+    
+    public Entity findBoulder(int x, int y) {
+    	for(Entity e : entities) {
+    		if (e.getX() == x && e.getY() == y && e instanceof Boulder) {
+    			return e;
+    		}
+    	}
+    	return null;
+    }
+    
+    public void turnSwitch() {
+    	for(Entity e : entities) {
+    		if(e instanceof FloorSwitch) {
+    			if (findBoulder(e.getX(), e.getY()) instanceof Boulder) {
+    				((FloorSwitch) e).update(true);
+    				System.out.println(((FloorSwitch) e).checkIsOn());
+    			}else {
+    				((FloorSwitch) e).update(false);
+    				System.out.println(((FloorSwitch) e).checkIsOn());
+    			}
+    		}
+    	}
+    }
+    
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
+    }
+    
+    public boolean checkSwitch() {
+    	for(Entity e : entities) {
+    		if(e instanceof FloorSwitch) {
+    			if(!((FloorSwitch) e).checkIsOn()){
+    				return false;
+    			}
+    			
+    		}
+    	}
+    	return true;
     }
     
     public boolean canGoThere(int x1, int y1, int x2, int y2) {

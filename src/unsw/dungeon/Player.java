@@ -231,18 +231,22 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 
 	public void pushUp(Entity boulder) {
 		((Boulder) boulder).moveUp();
+		dungeon.turnSwitch();
 	}
 	
 	public void pushDown(Entity boulder) {
 		((Boulder) boulder).moveDown();
+		dungeon.turnSwitch();
 	}
 	
 	public void pushLeft(Entity boulder) {
 		((Boulder) boulder).moveLeft();
+		dungeon.turnSwitch();
 	}
 	
 	public void pushRight(Entity boulder) {
 		((Boulder) boulder).moveRight();
+		dungeon.turnSwitch();
 	}
 
 }

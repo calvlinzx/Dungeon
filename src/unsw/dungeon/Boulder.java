@@ -1,5 +1,6 @@
 package unsw.dungeon;
 
+
 public class Boulder extends Entity{
 	
 	public Boulder(int x, int y) {
@@ -21,4 +22,5 @@ public class Boulder extends Entity{
     public void moveRight() {
     	x().set(getX() + 1);
     }
+    
 }
