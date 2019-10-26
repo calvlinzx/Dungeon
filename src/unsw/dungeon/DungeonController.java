@@ -93,6 +93,7 @@ public class DungeonController {
 		if(node != null) {
 			if(node.getId().equals("sword") || node.getId().equals("treasure") || node.getId().equals("key") ||
 			   node.getId().equals("invincibility")) {
+				player.pickUp();
 				squares.getChildren().remove(node);
 				if(node.getId().equals("invincibility")) {
 					player.useInvincibility();
@@ -110,38 +111,55 @@ public class DungeonController {
 		}
 	}
 	
-	public void playerActs() {
-		player.pickUp();
-	}
 	
     @FXML
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
         case UP:
-        	if(dungeon.canGoThere(player.getX(), player.getY()-1)) {
-        		player.moveUp();
-        		playerActs();
+        	if(dungeon.canGoThere(player.getX(), player.getY()-1, player.getX(), player.getY()-2)) {
+        		Entity boulder = dungeon.findEntity(player.getX(), player.getY()-1);
+        		if(boulder instanceof Boulder) {
+        			player.pushUp(boulder);
+        			player.moveUp();
+        		}else {
+        			player.moveUp();
+        		}
         		doThings2node(player.getX(), player.getY());
         	}
         	break;
         case DOWN:
-        	if(dungeon.canGoThere(player.getX(), player.getY()+1)) {
-        		player.moveDown();
-        		playerActs();
+        	if(dungeon.canGoThere(player.getX(), player.getY()+1, player.getX(), player.getY()+2)) {
+        		Entity boulder = dungeon.findEntity(player.getX(), player.getY()+1);
+        		if(boulder instanceof Boulder) {
+        			player.pushDown(boulder);
+        			player.moveDown();
+        		}else {
+        			player.moveDown();
+        		}
         		doThings2node(player.getX(), player.getY());
         	}
         	break;
         case LEFT:
-        	if(dungeon.canGoThere(player.getX()-1, player.getY())) {
-        		player.moveLeft();
-        		playerActs();
+        	if(dungeon.canGoThere(player.getX()-1, player.getY(), player.getX()-2, player.getY() )) {
+        		Entity boulder = dungeon.findEntity(player.getX()-1, player.getY());
+        		if(boulder instanceof Boulder) {
+        			player.pushLeft(boulder);
+        			player.moveLeft();
+        		}else {
+        			player.moveLeft();
+        		}
         		doThings2node(player.getX(), player.getY());
         	}
             break;
         case RIGHT:
-        	if(dungeon.canGoThere(player.getX()+1, player.getY())){
-        		player.moveRight();
-        		playerActs();
+        	if(dungeon.canGoThere(player.getX()+1, player.getY(), player.getX()+2, player.getY())){
+        		Entity boulder = dungeon.findEntity(player.getX()+1, player.getY());
+        		if(boulder instanceof Boulder) {
+        			player.pushRight(boulder);
+        			player.moveRight();
+        		}else {
+        			player.moveRight();
+        		}
         		doThings2node(player.getX(), player.getY());
         	}
             break;

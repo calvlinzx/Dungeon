@@ -66,7 +66,7 @@ public class Dungeon {
     
     public Entity findEntity(int x, int y) {
     	for (Entity e : entities) {
-    		if (e.getX() == x && e.getY() == y && !(e instanceof Player)) {
+    		if (e.getX() == x && e.getY() == y && !(e instanceof Player) && !(e instanceof FloorSwitch)) {
     			return e;
     		}
     	}
@@ -77,11 +77,16 @@ public class Dungeon {
     	entities.remove(entity);
     }
     
-    public boolean canGoThere(int x, int y) {
-    	Entity entity = findEntity(x, y);
-		if(entity instanceof Wall) {
+    public boolean canGoThere(int x1, int y1, int x2, int y2) {
+    	Entity entity1 = findEntity(x1, y1);
+    	Entity entity2 = findEntity(x2, y2);
+		if(entity1 instanceof Wall) {
 			return false;
-		}else if (entity instanceof Door && ! player.hasKey()) {
+		}else if (entity1 instanceof Door && ! player.hasKey()) {
+			return false;
+		}else if (entity1 instanceof Boulder && entity2 instanceof Boulder) {
+			return false;
+		}else if (entity1 instanceof Boulder && entity2 instanceof Wall) {
 			return false;
 		}
 		return true;

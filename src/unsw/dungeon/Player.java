@@ -228,4 +228,21 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 		}
 		return null;
 	}
+
+	public void pushUp(Entity boulder) {
+		((Boulder) boulder).moveUp();
+	}
+	
+	public void pushDown(Entity boulder) {
+		((Boulder) boulder).moveDown();
+	}
+	
+	public void pushLeft(Entity boulder) {
+		((Boulder) boulder).moveLeft();
+	}
+	
+	public void pushRight(Entity boulder) {
+		((Boulder) boulder).moveRight();
+	}
+
 }
