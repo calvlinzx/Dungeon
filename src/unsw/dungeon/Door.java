@@ -23,10 +23,12 @@ public class Door extends Entity implements ObserverDoor{
 	}
 
 	private void doorCannotOpen() {
+		System.out.println("cannot open");
 		state = cannotOpen;
 	}
 
 	private void doorCanOpen() {
+		System.out.println("can open");
 		state = canOpen;
 	}
 	

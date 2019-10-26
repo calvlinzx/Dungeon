@@ -78,7 +78,10 @@ public class Dungeon {
     }
     
     public boolean canGoThere(int x, int y) {
-		if(findEntity(x, y) instanceof Wall) {
+    	Entity entity = findEntity(x, y);
+		if(entity instanceof Wall) {
+			return false;
+		}else if (entity instanceof Door && ! player.hasKey()) {
 			return false;
 		}
 		return true;

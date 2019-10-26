@@ -11,7 +11,7 @@ public class CanOpenState implements StateCanOpen {
 
 	@Override
 	public boolean openable() {
-		// TODO Auto-generated method stub
+		System.out.println("opended");
 		return true;
 	}
 

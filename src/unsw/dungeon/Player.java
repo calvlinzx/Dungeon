@@ -126,9 +126,11 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     	Entity door = meetEntity();
     	if(door != null && door instanceof Door) {
     		boolean ret = ((Door)door).open();
-    		setUsePropStrategy(new UseKey());
-    		useProp.useProp(this, findKey2use());
-    		dungeon.removeEntity(door);
+    		if(ret) {
+	    		setUsePropStrategy(new UseKey());
+	    		useProp.useProp(this, findKey2use());
+	    		dungeon.removeEntity(door);
+    		}
     		return ret;
     	}
     	return false;
@@ -210,14 +212,14 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
         }
 	}
 
-	private boolean hasKey() {
+	public boolean hasKey() {
 		if(findKey2use() != null) {
 			return true;
 		}
 		return false;
 	}
 
-	private Entity findKey2use() {
+	public Entity findKey2use() {
 		for (Entity e : pickups) {
 			if (e instanceof Key) {
 				if(((Key) e).getCanUse())

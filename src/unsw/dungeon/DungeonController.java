@@ -81,7 +81,7 @@ public class DungeonController {
 	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
 	    for (Node node : gridPane.getChildren()) {
 	        if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
-	        	if(! node.getId().equals("player"))
+	        	if(! node.getId().equals("player") & ! node.getId().equals("opend door"))
 	        		return node;
 	        }
 	    }
@@ -100,6 +100,12 @@ public class DungeonController {
 			}
 			if(node.getId().equals("enemy") && player.battleEnemy()) {
 				squares.getChildren().remove(node);
+			}
+			if(node.getId().equals("door") && player.openDoor()) {
+				squares.getChildren().remove(node);
+				ImageView view = new ImageView(new Image("/open_door.png"));
+		        view.setId("opend door");
+				squares.add(view, x, y);
 			}
 		}
 	}
