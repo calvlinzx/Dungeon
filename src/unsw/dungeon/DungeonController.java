@@ -108,6 +108,9 @@ public class DungeonController {
 		        view.setId("opend door");
 				squares.add(view, x, y);
 			}
+			if(node.getId().equals("portal")) {
+				player.transport();
+			}
 		}
 		if(dungeon.checkSwitch()) {
 			System.out.println("all switch on");

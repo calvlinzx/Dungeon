@@ -109,6 +109,15 @@ public class Dungeon {
     	entities.remove(entity);
     }
     
+    public boolean hasSwitch() {
+    	for(Entity e : entities) {
+    		if(e instanceof FloorSwitch) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
     public boolean checkSwitch() {
     	for(Entity e : entities) {
     		if(e instanceof FloorSwitch) {
@@ -118,7 +127,7 @@ public class Dungeon {
     			
     		}
     	}
-    	return true;
+    	return hasSwitch();
     }
     
     public boolean canGoThere(int x1, int y1, int x2, int y2) {
@@ -134,5 +143,14 @@ public class Dungeon {
 			return false;
 		}
 		return true;
+	}
+
+	public Entity findPortal(int x, int y) {
+		for(Entity e : entities) {
+			if ((e.getX() != x || e.getY() != y) && e instanceof Portal) {
+				return e;
+			}
+		}
+		return null;
 	}
 }
