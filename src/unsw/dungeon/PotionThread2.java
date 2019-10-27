@@ -12,14 +12,13 @@ public class PotionThread2 extends Thread {
 
 	@Override
 	public void run() {
-		while(((Invincibility) entity).getIsValid()) {
+		while(((Invincibility) entity).getIsValid() && ! player.battleEnemy()) {
 			player.notifyEnemy();
 			try {
-				sleep(1000);
+				sleep(800);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		player.notifyEnemy();
 	}
 }

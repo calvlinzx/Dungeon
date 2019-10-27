@@ -89,6 +89,10 @@ public class DungeonController {
 	}
 	
 	private void doThings2node(int x, int y) {
+		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
+			player.notifyEnemy();
+			player.battleEnemy();
+		}
 		Node node = getNodeFromGridPane(squares, x, y);
 		if(node != null) {
 			if(node.getId().equals("sword") || node.getId().equals("treasure") || node.getId().equals("key") ||
@@ -99,7 +103,7 @@ public class DungeonController {
 					player.useInvincibility();
 				}
 			}
-			if(node.getId().equals("enemy") && player.battleEnemy()) {
+			if(node.getId().equals("enemy")) {
 				squares.getChildren().remove(node);
 			}
 			if(node.getId().equals("door") && player.openDoor()) {
@@ -116,6 +120,7 @@ public class DungeonController {
 			System.out.println("all switch on");
 		}
 	}
+	
 	
 	
     @FXML
