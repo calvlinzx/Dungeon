@@ -16,6 +16,7 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     private List<ObserverEnemy> enemyObservers;
     private UsePropStrategy useProp;
     private List<ObserverDoor> doorObservers;
+    private boolean isAlive;
     
 
     /**
@@ -29,6 +30,7 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
         this.pickups = new ArrayList<>();
         this.enemyObservers = new ArrayList<>();
         this.doorObservers = new ArrayList<>();
+        this.isAlive = true;
     }
 
     public void moveUp() {
@@ -107,7 +109,7 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     public boolean battleEnemy() {
     	Entity enemy = meetEntity();
     	if(enemy != null && enemy instanceof Enemy) {
-	    	boolean ret =  ((Enemy) enemy).meetPlayer();
+	    	boolean ret =  ((Enemy) enemy).meetPlayer(this);
 	    	if (ret) {
 	    		if(! hasInvincibility()) {
 		    		setUsePropStrategy(new UseSword());
@@ -253,6 +255,14 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 		Entity portal = dungeon.findPortal(this.getX(), this.getY());
 		this.x().set(portal.getX());
 		this.y().set(portal.getY());
+	}
+
+	public void beKilled() {
+		this.isAlive = false;
+	}
+	
+	public boolean checkAlive() {
+		return isAlive;
 	}
 
 }

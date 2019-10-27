@@ -48,14 +48,27 @@ public class DungeonController {
     
     @FXML
 	void goBack2home(ActionEvent event) throws IOException {
-		go2homeScene("Homepafe.json");
+		go2homeScene();
 	}
 
-    private void go2homeScene(String string) throws IOException {
+    private void go2homeScene() throws IOException {
     	Stage primaryStage = (Stage) back2home.getScene().getWindow();
     	HomepageController hc = new HomepageController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         loader.setController(hc);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        root.requestFocus();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+	}
+    
+    
+    private void go2faildScene() throws IOException {
+    	Stage primaryStage = (Stage) back2home.getScene().getWindow();
+    	FailedpageController fc = new FailedpageController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("failedPage.fxml"));
+        loader.setController(fc);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         root.requestFocus();
@@ -92,6 +105,13 @@ public class DungeonController {
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
 			player.battleEnemy();
+		}
+		if(! player.checkAlive()) {
+			try {
+				go2faildScene();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		Node node = getNodeFromGridPane(squares, x, y);
 		if(node != null) {

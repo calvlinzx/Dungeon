@@ -9,7 +9,7 @@ public class CanBeKilledState implements StateKillable {
 	}
 
 	@Override
-	public boolean meetPlayer() {
+	public boolean meetPlayer(Entity player) {
 		System.out.println("Enemy die");
 		return true;
 	}

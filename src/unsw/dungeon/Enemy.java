@@ -122,7 +122,7 @@ public class Enemy extends Entity implements ObserverEnemy{
 		this.state = canBeKilled;
 	}
 	
-	public boolean meetPlayer() {
-		return state.meetPlayer();
+	public boolean meetPlayer(Entity player) {
+		return state.meetPlayer(dungeon.getPlayer());
 	}
 }

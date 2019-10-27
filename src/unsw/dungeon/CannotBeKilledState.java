@@ -9,8 +9,8 @@ public class CannotBeKilledState implements StateKillable {
 	}
 
 	@Override
-	public boolean meetPlayer() {
-		System.out.println("player die");
+	public boolean meetPlayer(Entity player) {
+		((Player) player).beKilled();
 		return false;
 	}
 	
