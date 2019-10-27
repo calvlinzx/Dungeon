@@ -20,12 +20,21 @@ public class Dungeon {
     private int width, height;
     private List<Entity> entities;
     private Player player;
+    private GoalComponent goal;
 
     public Dungeon(int width, int height) {
         this.width = width;
         this.height = height;
         this.entities = new ArrayList<>();
         this.player = null;
+    }
+    
+    public void addGoal(GoalComponent goal) {
+    	this.goal = goal;
+    }
+    
+    public boolean checkgoal() {
+    	return goal.checkgoals();
     }
 
     public int getWidth() {
@@ -96,10 +105,8 @@ public class Dungeon {
     		if(e instanceof FloorSwitch) {
     			if (findBoulder(e.getX(), e.getY()) instanceof Boulder) {
     				((FloorSwitch) e).update(true);
-    				System.out.println(((FloorSwitch) e).checkIsOn());
     			}else {
     				((FloorSwitch) e).update(false);
-    				System.out.println(((FloorSwitch) e).checkIsOn());
     			}
     		}
     	}
@@ -128,6 +135,26 @@ public class Dungeon {
     		}
     	}
     	return hasSwitch();
+    }
+    
+    public Entity findPlayer(int x, int y) {
+    	for(Entity e : entities) {
+    		if (e.getX() == x && e.getY() == y && e instanceof Player) {
+    			return e;
+    		}
+    	}
+    	return null;
+    }
+    
+    public boolean checkExit() {
+    	for(Entity e : entities) {
+    		if (e instanceof Exit) {
+    			if(findPlayer(e.getX(), e.getY()) instanceof Player) {
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
     }
     
     public boolean canGoThere(int x1, int y1, int x2, int y2) {
@@ -172,5 +199,14 @@ public class Dungeon {
 			}
 		}
 		return null;
+	}
+
+	public boolean hasTreasure() {
+		for(Entity e : entities) {
+			if ( e instanceof Treasure) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

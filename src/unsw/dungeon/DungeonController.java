@@ -102,6 +102,9 @@ public class DungeonController {
 	}
 	
 	private void doThings2node(int x, int y) {
+		if(dungeon.checkgoal()) {
+			System.out.println("game finished");
+		}
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
 			player.battleEnemy();

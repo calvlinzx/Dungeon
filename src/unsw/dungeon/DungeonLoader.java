@@ -39,7 +39,72 @@ public abstract class DungeonLoader {
         for (int i = 0; i < jsonEntities.length(); i++) {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
+        
+        JSONObject goals = json.getJSONObject("goal-condition");
+        dungeon.addGoal(setUpGoals(dungeon, goals));
+        
         return dungeon;
+    }
+    
+    private GoalComponent setUpGoals(Dungeon dungeon, JSONObject json) {
+    	String firstLine = json.getString("goal");
+    	GoalComposite finalGoal = new GoalComposite("final goal", dungeon);
+    	if (! firstLine.equals("AND") && !firstLine.equals("OR")) {
+    		finalGoal.add(makeLeaf(firstLine, dungeon));
+    	}else {
+    		if (firstLine.equals("AND")) {
+    			JSONArray subgoals = json.getJSONArray("subgoals");
+    			finalGoal.add(makeAndGoal(dungeon, subgoals));
+    		}else if (firstLine.equals("or")) {
+    			JSONArray subgoals = json.getJSONArray("subgoals");
+    			finalGoal.add(makeOrGoal(dungeon, subgoals));
+    		}
+    	}
+    	return finalGoal;
+    }
+    
+    private GoalComposite makeAndGoal(Dungeon dungeon, JSONArray subgoals) {
+    	GoalComposite subcomposite = new GoalComposite("and", dungeon);
+    	for (int i = 0; i < subgoals.length(); i++) {
+    		JSONObject goal = subgoals.getJSONObject(i);
+    		String firstLine = goal.getString("goal");
+    		if (!firstLine.equals("AND") && !firstLine.equals("OR")) {
+    			subcomposite.add(makeLeaf(firstLine, dungeon));
+    		}else {
+    			if (firstLine.equals("AND")) {
+        			JSONArray andsubs = json.getJSONArray("subgoals");
+        			subcomposite.add(makeAndGoal(dungeon, andsubs));
+        		}else if (firstLine.equals("OR")) {
+        			JSONArray orsubs = json.getJSONArray("subgoals");
+        			subcomposite.add(makeOrGoal(dungeon, orsubs));
+        		}
+    		}
+    	}
+    	return subcomposite;
+    }
+    
+    private GoalComposite makeOrGoal(Dungeon dungeon, JSONArray subgoals) {
+    	GoalComposite subcomposite = new GoalComposite("or", dungeon);
+    	for (int i = 0; i < subgoals.length(); i++) {
+    		JSONObject goal = subgoals.getJSONObject(i);
+    		String firstLine = goal.getString("goal");
+    		if (!firstLine.equals("AND") && !firstLine.equals("OR")) {
+    			subcomposite.add(makeLeaf(firstLine, dungeon));
+    		}else {
+    			if (firstLine.equals("AND")) {
+        			JSONArray andsubs = json.getJSONArray("subgoals");
+        			subcomposite.add(makeAndGoal(dungeon, andsubs));
+        		}else if (firstLine.equals("OR")) {
+        			JSONArray orsubs = json.getJSONArray("subgoals");
+        			subcomposite.add(makeOrGoal(dungeon, orsubs));
+        		}
+    		}
+    	}
+    	return subcomposite;
+    }
+    
+    private GoalLeaf makeLeaf(String goal, Dungeon dungeon) {
+    	return new GoalLeaf(goal, dungeon);
     }
 
     private void loadEntity(Dungeon dungeon, JSONObject json) {
