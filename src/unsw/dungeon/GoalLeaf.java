@@ -39,4 +39,22 @@ public class GoalLeaf implements GoalComponent {
 		return false;
 	}
 
+	@Override
+	public String getInfo() {
+		String ret = "";
+		if(goal.equals("exit")) {
+			ret += "(getting to exit)";
+		}
+		if(goal.equals("enemies")) {
+			ret += "(kill all enemies)";
+		}
+		if (goal.equals("boulders")) {
+			ret += "(turn on all the floor switches)";
+		}
+		if (goal.equals("treasure")) {
+			ret += "(pick up all the treasure)";
+		}
+		return ret;
+	}
+
 }

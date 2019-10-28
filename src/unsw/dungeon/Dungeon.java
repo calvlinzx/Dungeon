@@ -209,4 +209,8 @@ public class Dungeon {
 		}
 		return false;
 	}
+	
+	public String getGameGuide() {
+		return goal.getInfo();
+	}
 }

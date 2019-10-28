@@ -48,7 +48,7 @@ public abstract class DungeonLoader {
     
     private GoalComponent setUpGoals(Dungeon dungeon, JSONObject json) {
     	String firstLine = json.getString("goal");
-    	GoalComposite finalGoal = new GoalComposite("final goal", dungeon);
+    	GoalComposite finalGoal = new GoalComposite("main goal", dungeon);
     	if (! firstLine.equals("AND") && !firstLine.equals("OR")) {
     		finalGoal.add(makeLeaf(firstLine, dungeon));
     	}else {

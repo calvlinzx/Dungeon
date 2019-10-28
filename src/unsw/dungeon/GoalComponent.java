@@ -6,5 +6,7 @@ public interface GoalComponent {
 
     public void remove(GoalComponent component);
     
+    public String getInfo();
+    
     public boolean checkgoals();
 }

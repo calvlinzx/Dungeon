@@ -16,7 +16,7 @@ public class GoalComposite implements GoalComponent {
 	}
 	
 	public boolean checkgoals() {
-		if (goal.equals("final goal")) {
+		if (goal.equals("main goal")) {
 			for (GoalComponent g : subgoals) {
 				if (! g.checkgoals()) {
 					return false;
@@ -51,6 +51,32 @@ public class GoalComposite implements GoalComponent {
 	public void remove(GoalComponent component) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getInfo() {
+		String ret = "[";
+		if (goal.equals("main goal")) {
+			for (GoalComponent g : subgoals) {
+				ret += g.getInfo();
+			}
+			ret = ret.substring(1);
+		}
+		if (goal.equals("and")) {
+			for (GoalComponent g : subgoals) {
+				ret += g.getInfo() + "\nand\n";
+			}
+			ret = ret.substring(0, ret.length()-5);
+			ret += "]";
+		}
+		if (goal.equals("or")) {
+			for (GoalComponent g : subgoals) {
+				ret += g.getInfo() + "\nor\n";
+			}
+			ret = ret.substring(0, ret.length()-4);
+			ret += "]";
+		}
+		return ret;
 	}
 
 }

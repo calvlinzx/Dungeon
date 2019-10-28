@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -37,6 +38,9 @@ public class DungeonController {
     private Dungeon dungeon;
     @FXML
     private Button back2home;
+    
+    @FXML
+    private Label label;
 
     public DungeonController(Dungeon dungeon, List<ImageView> initialEntities) {
         this.dungeon = dungeon;
@@ -75,6 +79,20 @@ public class DungeonController {
         primaryStage.setScene(scene);
         primaryStage.show();
 	}
+    
+    private void go2winScene() throws IOException {
+    	Stage primaryStage = (Stage) back2home.getScene().getWindow();
+    	FailedpageController fc = new FailedpageController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WinPage.fxml"));
+        loader.setController(fc);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        root.requestFocus();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+	}
+    
+    
 
     
 	@FXML
@@ -89,6 +107,8 @@ public class DungeonController {
        // }
         for (ImageView entity : initialEntities)
             squares.getChildren().add(entity);
+        
+        label.setText(label.getText() + "\n" + dungeon.getGameGuide());
     }
 	
 	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
@@ -102,9 +122,7 @@ public class DungeonController {
 	}
 	
 	private void doThings2node(int x, int y) {
-		if(dungeon.checkgoal()) {
-			System.out.println("game finished");
-		}
+		//System.out.println(dungeon.getGameGuide());
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
 			player.battleEnemy();
@@ -139,8 +157,12 @@ public class DungeonController {
 				player.transport();
 			}
 		}
-		if(dungeon.checkSwitch()) {
-			System.out.println("all switch on");
+		if(dungeon.checkgoal()) {
+			try {
+				go2winScene();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

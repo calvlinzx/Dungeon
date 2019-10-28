@@ -24,7 +24,7 @@
          <font>
             <Font name="System Bold" size="34.0" />
          </font></Button>
-      <Label fx:id="lable" alignment="TOP_LEFT" layoutX="185.0" prefHeight="199.0" prefWidth="616.0" style="-fx-background-color: white;" text="Game guide:">
+      <Label fx:id="label" alignment="TOP_LEFT" layoutX="185.0" prefHeight="199.0" prefWidth="616.0" style="-fx-background-color: white;" text="Game guide:">
          <font>
             <Font size="26.0" />
          </font>
