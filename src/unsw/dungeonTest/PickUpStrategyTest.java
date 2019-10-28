@@ -70,7 +70,42 @@ public class PickUpStrategyTest {
 		assertEquals(1, pickUps.size());
 	}
 	
-	
+	@Test
+	void PickUpAllTest() {
+		List<Entity> pickUps = player.getPickups();
+		assertEquals(0, pickUps.size());
+		Entity treasure = new Treasure(1, 1);
+		Entity sword = new Sword(2, 2);
+		Entity key = new Key(3, 3);
+		Entity potion = new Invincibility(4, 4);
+		dungeon.addEntity(sword);
+		dungeon.addEntity(key);
+		dungeon.addEntity(treasure);
+		dungeon.addEntity(potion);
+		// picking up treasure
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertEquals(1, pickUps.size());
+		
+		// picking up sword
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertEquals(2, pickUps.size());
+		
+		// picking up key
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertEquals(3, pickUps.size());
+		
+		// picking up potion
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertEquals(4, pickUps.size());
+	}
 	
 	
 }
