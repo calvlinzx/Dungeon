@@ -64,14 +64,14 @@ public class GoalComposite implements GoalComponent {
 		}
 		if (goal.equals("and")) {
 			for (GoalComponent g : subgoals) {
-				ret += g.getInfo() + "\nand\n";
+				ret += g.getInfo() + " and\n";
 			}
 			ret = ret.substring(0, ret.length()-5);
 			ret += "]";
 		}
 		if (goal.equals("or")) {
 			for (GoalComponent g : subgoals) {
-				ret += g.getInfo() + "\nor\n";
+				ret += g.getInfo() + " or\n";
 			}
 			ret = ret.substring(0, ret.length()-4);
 			ret += "]";
