@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('file:///import/glass/4/z5196738/Desktop/2511/project/H16A-lin_wu/images/dirt_0_new.png');" xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('file:////tmp_amd/adams/export/adams/4/z5217017/comp2511/H16A-lin_wu/images/dirt_0_new.png');" xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="level1" layoutX="133.0" layoutY="149.0" mnemonicParsing="false" onAction="#go2level1" text="Level 1" />
       <Button fx:id="level2" layoutX="367.0" layoutY="149.0" mnemonicParsing="false" onAction="#go2level2" text="Level 2" />
