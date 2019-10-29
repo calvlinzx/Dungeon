@@ -13,17 +13,20 @@ public class PickUpStrategyTest {
 
 	Dungeon dungeon;
 	Player player;
+	Enemy enemy;
 	
 	@BeforeEach
 	void init() {
 		dungeon = new Dungeon(5, 5);
 		player = new Player(dungeon, 0, 0);
+		enemy = new Enemy(dungeon, 5, 5);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
+		dungeon.addEntity(enemy);
 	}
 	
 	@Test
-	void PickUpTreasureTest() {
+	void PlayerPickUpTreasureTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
 		Entity treasure = new Treasure(1, 1);
@@ -34,11 +37,11 @@ public class PickUpStrategyTest {
 		assertEquals(1, pickUps.size());
 		assertTrue(dungeon.findEntity(1, 1) == null);
 		assertTrue(player.meetEntity() == null);
-		System.out.println("PickUpTreasureTest passed");
+		System.out.println("PlayerPickUpTreasureTest passed");
 	}
 	
 	@Test
-	void PickUpSwordTest() {
+	void PlayerPickUpSwordTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
 		Entity sword = new Sword(1, 1);
@@ -49,11 +52,11 @@ public class PickUpStrategyTest {
 		assertEquals(1, pickUps.size());
 		assertTrue(dungeon.findEntity(1, 1) == null);
 		assertTrue(player.meetEntity() == null);
-		System.out.println("PickUpSwordTest passed");
+		System.out.println("PlayerPickUpSwordTest passed");
 	}
 	
 	@Test
-	void PickUpKeyTest() {
+	void PlayerPickUpKeyTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
 		Entity key = new Key(1, 1);
@@ -64,11 +67,11 @@ public class PickUpStrategyTest {
 		assertEquals(1, pickUps.size());
 		assertTrue(dungeon.findEntity(1, 1) == null);
 		assertTrue(player.meetEntity() == null);
-		System.out.println("PickUpKeyTest passed");
+		System.out.println("PlayerPickUpKeyTest passed");
 	}
 	
 	@Test
-	void PickUpPotionTest() {
+	void PlayerPickUpPotionTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
 		Entity potion = new Invincibility(1, 1);
@@ -79,11 +82,11 @@ public class PickUpStrategyTest {
 		assertEquals(1, pickUps.size());
 		assertTrue(dungeon.findEntity(1, 1) == null);
 		assertTrue(player.meetEntity() == null);
-		System.out.println("PickUpPotionTest passed");
+		System.out.println("PlayerPickUpPotionTest passed");
 	}
 	
 	@Test
-	void PickUpAllTest() {
+	void PlayerPickUpAllTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
 		Entity treasure = new Treasure(1, 1);
@@ -122,8 +125,42 @@ public class PickUpStrategyTest {
 		assertTrue(dungeon.findEntity(2, 2) == null);
 		assertTrue(dungeon.findEntity(3, 3) == null);
 		assertTrue(dungeon.findEntity(4, 4) == null);
-		System.out.println("PickUpAllTest passed");
+		System.out.println("PlayerPickUpAllTest passed");
 	}
 	
+	@Test
+	void EnemyCannotPickUpTreasureTest() {
+		Entity treasure = new Treasure(1, 1);
+		dungeon.addEntity(treasure);
+		((Enemy) enemy).go2position(1, 1);
+		assertTrue(dungeon.findEntity(1, 1) != null);
+		System.out.println("EnemyCannotPickUpTreasureTest passed");
+	}
 	
+	@Test
+	void EnemyCannotPickUpSwordTest() {
+		Entity sword = new Sword(1, 1);
+		dungeon.addEntity(sword);
+		((Enemy) enemy).go2position(1, 1);
+		assertTrue(dungeon.findEntity(1, 1) != null);
+		System.out.println("EnemyCannotPickUpSwordTest passed");
+	}
+	
+	@Test
+	void EnemyCannotPickUpKeyTest() {
+		Entity key = new Key(1, 1);
+		dungeon.addEntity(key);
+		((Enemy) enemy).go2position(1, 1);
+		assertTrue(dungeon.findEntity(1, 1) != null);
+		System.out.println("EnemyCannotPickUpKeyTest passed");
+	}
+	
+	@Test
+	void EnemyCannotPickUpPotionTest() {
+		Entity potion = new Invincibility(1, 1);
+		dungeon.addEntity(potion);
+		((Enemy) enemy).go2position(1, 1);
+		assertTrue(dungeon.findEntity(1, 1) != null);
+		System.out.println("EnemyCannotPickUpPotionTest passed");
+	}
 }
