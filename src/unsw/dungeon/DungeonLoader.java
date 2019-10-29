@@ -147,6 +147,7 @@ public abstract class DungeonLoader {
         	entity = enemy;
         	break;
         case "key":
+        	//int key_id = json.getInt("ID");
         	Key key = new Key(x, y);
         	onLoad(key);
         	entity = key;
@@ -172,6 +173,7 @@ public abstract class DungeonLoader {
         	entity = invincibility;
         	break;
         case "door":
+        	//int door_id = json.getInt("ID");
         	Door door = new Door(x, y);
         	onLoad(door);
         	entity = door;

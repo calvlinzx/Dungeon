@@ -160,6 +160,7 @@ public class PickUpStrategyTest {
 		Entity potion = new Invincibility(1, 1);
 		dungeon.addEntity(potion);
 		((Enemy) enemy).go2position(1, 1);
+		System.out.println(enemy.getX() + ","+ enemy.getY());
 		assertTrue(dungeon.findEntity(1, 1) != null);
 		System.out.println("EnemyCannotPickUpPotionTest passed");
 	}
