@@ -99,12 +99,14 @@ public class DungeonController {
     public void initialize() {
         Image ground = new Image("/dirt_0_new.png");
 
-       // Add the ground first so it is below all other entities
-       // for (int x = 0; x < dungeon.getWidth(); x++) {
-       //     for (int y = 0; y < dungeon.getHeight(); y++) {
-       //         squares.add(new ImageView(ground), x, y);
-       //     }
-       // }
+       //Add the ground first so it is below all other entities
+        for (int x = 0; x < dungeon.getWidth(); x++) {
+            for (int y = 0; y < dungeon.getHeight(); y++) {
+            	ImageView g = new ImageView(ground);
+            	g.setId("ground");
+            	squares.add(g, x, y);
+            }
+        }
         for (ImageView entity : initialEntities)
             squares.getChildren().add(entity);
         
@@ -114,7 +116,7 @@ public class DungeonController {
 	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
 	    for (Node node : gridPane.getChildren()) {
 	        if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
-	        	if(! node.getId().equals("player") & ! node.getId().equals("opend door"))
+	        	if(! node.getId().equals("player") && ! node.getId().equals("opend door") && ! node.getId().equals("ground"))
 	        		return node;
 	        }
 	    }
