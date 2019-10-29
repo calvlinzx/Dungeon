@@ -33,5 +33,19 @@ class DoorTest {
 		System.out.println(player.getX() +","+ player.getY());
 		//assertTrue(player.getX() == 1 && player.getY() == 0);
 	}
-
+	
+	@Test
+	void PlayerCanGoThroughOpenDoor() {
+		
+	}
+	
+	@Test
+	void PlayerCanDoorWithRightKey() {
+		
+	}
+	
+	@Test
+	void PlayerCannotOpenDoorWithWrongKey() {
+		
+	}
 }
