@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('file:////tmp_amd/adams/export/adams/4/z5217017/comp2511/H16A-lin_wu/images/dirt_0_new.png');" xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="level1" layoutX="133.0" layoutY="149.0" mnemonicParsing="false" onAction="#go2level1" text="Level 1" />
       <Button fx:id="level2" layoutX="367.0" layoutY="149.0" mnemonicParsing="false" onAction="#go2level2" text="Level 2" />
@@ -17,12 +17,12 @@
       <Button fx:id="level8" layoutX="367.0" layoutY="301.0" mnemonicParsing="false" onAction="#go2level8" text="Level 8" />
       <Button fx:id="level9" layoutX="133.0" layoutY="350.0" mnemonicParsing="false" onAction="#go2level9" text="Level 9" />
       <Button fx:id="level10" layoutX="367.0" layoutY="350.0" mnemonicParsing="false" onAction="#go2level10" text="Level 10" />
-      <Label layoutX="111.0" layoutY="26.0" text="Welcome to Dungeon" textAlignment="CENTER" textFill="#eee9e9">
+      <Label layoutX="111.0" layoutY="26.0" text="Welcome to Dungeon" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="107.0" text="Please choose a level:" textFill="#f8f3f3">
+      <Label layoutX="40.0" layoutY="107.0" text="Please choose a level:">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
