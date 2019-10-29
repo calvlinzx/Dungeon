@@ -124,17 +124,8 @@ public class DungeonController {
 	}
 	
 	private void doThings2node(int x, int y) {
-		//System.out.println(dungeon.getGameGuide());
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
-			player.battleEnemy();
-		}
-		if(! player.checkAlive()) {
-			try {
-				go2faildScene();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 		Node node = getNodeFromGridPane(squares, x, y);
 		if(node != null) {
@@ -147,7 +138,9 @@ public class DungeonController {
 				}
 			}
 			if(node.getId().equals("enemy")) {
-				squares.getChildren().remove(node);
+				while(player.battleEnemy()) {
+					squares.getChildren().remove(getNodeFromGridPane(squares, x, y));
+				}
 			}
 			if(node.getId().equals("door") && player.openDoor()) {
 				squares.getChildren().remove(node);
@@ -162,6 +155,13 @@ public class DungeonController {
 		if(dungeon.checkgoal()) {
 			try {
 				go2winScene();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(! player.checkAlive()) {
+			try {
+				go2faildScene();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

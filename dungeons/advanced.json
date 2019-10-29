@@ -173,6 +173,21 @@
       "type": "wall"
     },
     {
+      "x": 16,
+      "y": 2,
+      "type": "enemy"
+    },
+    {
+      "x": 16,
+      "y": 3,
+      "type": "enemy"
+    },
+    {
+      "x": 16,
+      "y": 4,
+      "type": "enemy"
+    },
+    {
       "x": 17,
       "y": 2,
       "type": "wall"

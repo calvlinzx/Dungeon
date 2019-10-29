@@ -6,7 +6,7 @@ public class Sword extends Entity{
 
 	public Sword(int x, int y) {
 		super(x, y);
-		this.hits = 1;
+		this.hits = 5;
 	}
 	
 	public void hit() {

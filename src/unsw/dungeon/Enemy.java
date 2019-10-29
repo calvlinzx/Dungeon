@@ -50,19 +50,19 @@ public class Enemy extends Entity implements ObserverEnemy{
 	
 	private void approachPlayer(int x, int y) {
 		int distance = getlastDistance(x, y);
-		if (getDistance(getX()-1, getY(), x, y) < distance && dungeon.canGoThere(getX()-1, getY())) {
+		if (getDistance(getX()-1, getY(), x, y) < distance && dungeon.canGoThere(getX()-1, getY()) && ! (dungeon.findEntity(getX()-1, getY()) instanceof Enemy)) {
 			 x().set(getX() - 1);
 			 setLast(getX(), getY());
 			 return;
-		}else if(getDistance(getX()+1, getY(), x, y) < distance && dungeon.canGoThere(getX()+1, getY())) {
+		}else if(getDistance(getX()+1, getY(), x, y) < distance && dungeon.canGoThere(getX()+1, getY()) && ! (dungeon.findEntity(getX()+1, getY()) instanceof Enemy)) {
 			 x().set(getX() + 1);
 			 setLast(getX(), getY());
 			 return;
-		}else if(getDistance(getX(), getY()-1, x ,y) < distance && dungeon.canGoThere(getX(), getY()-1)) {
+		}else if(getDistance(getX(), getY()-1, x ,y) < distance && dungeon.canGoThere(getX(), getY()-1) && ! (dungeon.findEntity(getX(), getY()-1) instanceof Enemy)) {
 			 y().set(getY() - 1);
 			 setLast(getX(), getY());
 			 return;
-		}else if(getDistance(getX(), getY()+1, x, y) < distance && dungeon.canGoThere(getX(), getY()+1)) {
+		}else if(getDistance(getX(), getY()+1, x, y) < distance && dungeon.canGoThere(getX(), getY()+1) && ! (dungeon.findEntity(getX(), getY()+1) instanceof Enemy)) {
 			 y().set(getY() + 1);
 			 setLast(getX(), getY());
 			 return;
@@ -88,22 +88,22 @@ public class Enemy extends Entity implements ObserverEnemy{
 	}
 	
 	public void go2position(int x, int y) {
-		if (getX() < x && dungeon.canGoThere(getX()+1, getY())) {
+		if (getX() < x && dungeon.canGoThere(getX()+1, getY()) && ! (dungeon.findEntity(getX()+1, getY()) instanceof Enemy)) {
 			x().set(getX()+1);
 			setLast(getX(), getY());
 			return;
 		}
-		if (getX() > x && dungeon.canGoThere(getX()-1, getY())) {
+		if (getX() > x && dungeon.canGoThere(getX()-1, getY()) && ! (dungeon.findEntity(getX()-1, getY()) instanceof Enemy)) {
 			x().set(getX()-1);
 			setLast(getX(), getY());
 			return;
 		}
-		if (getY() < y && dungeon.canGoThere(getX(), getY()+1)) {
+		if (getY() < y && dungeon.canGoThere(getX(), getY()+1) && ! (dungeon.findEntity(getX(), getY()+1) instanceof Enemy)) {
 			y().set(getY()+1);
 			setLast(getX(), getY());
 			return;
 		}
-		if (getY() > y && dungeon.canGoThere(getX(), getY()-1)) {
+		if (getY() > y && dungeon.canGoThere(getX(), getY()-1) && ! (dungeon.findEntity(getX(), getY()-1) instanceof Enemy)) {
 			y().set(getY()-1);
 			setLast(getX(), getY());
 			return;
