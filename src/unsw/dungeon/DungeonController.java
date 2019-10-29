@@ -137,10 +137,8 @@ public class DungeonController {
 					player.useInvincibility();
 				}
 			}
-			if(node.getId().equals("enemy")) {
-				while(player.battleEnemy()) {
-					squares.getChildren().remove(getNodeFromGridPane(squares, x, y));
-				}
+			if(node.getId().equals("enemy") && player.battleEnemy()) {
+					squares.getChildren().remove(node);
 			}
 			if(node.getId().equals("door") && player.openDoor()) {
 				squares.getChildren().remove(node);
