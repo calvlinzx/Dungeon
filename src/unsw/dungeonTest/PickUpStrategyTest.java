@@ -32,6 +32,9 @@ public class PickUpStrategyTest {
 		player.moveRight();
 		player.pickUp();
 		assertEquals(1, pickUps.size());
+		assertTrue(dungeon.findEntity(1, 1) == null);
+		assertTrue(player.meetEntity() == null);
+		System.out.println("PickUpTreasureTest passed");
 	}
 	
 	@Test
@@ -44,6 +47,9 @@ public class PickUpStrategyTest {
 		player.moveRight();
 		player.pickUp();
 		assertEquals(1, pickUps.size());
+		assertTrue(dungeon.findEntity(1, 1) == null);
+		assertTrue(player.meetEntity() == null);
+		System.out.println("PickUpSwordTest passed");
 	}
 	
 	@Test
@@ -56,6 +62,9 @@ public class PickUpStrategyTest {
 		player.moveRight();
 		player.pickUp();
 		assertEquals(1, pickUps.size());
+		assertTrue(dungeon.findEntity(1, 1) == null);
+		assertTrue(player.meetEntity() == null);
+		System.out.println("PickUpKeyTest passed");
 	}
 	
 	@Test
@@ -68,6 +77,9 @@ public class PickUpStrategyTest {
 		player.moveRight();
 		player.pickUp();
 		assertEquals(1, pickUps.size());
+		assertTrue(dungeon.findEntity(1, 1) == null);
+		assertTrue(player.meetEntity() == null);
+		System.out.println("PickUpPotionTest passed");
 	}
 	
 	@Test
@@ -105,6 +117,12 @@ public class PickUpStrategyTest {
 		player.moveRight();
 		player.pickUp();
 		assertEquals(4, pickUps.size());
+		
+		assertTrue(dungeon.findEntity(1, 1) == null);
+		assertTrue(dungeon.findEntity(2, 2) == null);
+		assertTrue(dungeon.findEntity(3, 3) == null);
+		assertTrue(dungeon.findEntity(4, 4) == null);
+		System.out.println("PickUpAllTest passed");
 	}
 	
 	
