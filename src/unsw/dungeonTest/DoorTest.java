@@ -27,11 +27,9 @@ class DoorTest {
 	
 	@Test
 	void PlayerCannotGoThroughClosedDoor() {
-		player.moveRight();
-		player.moveDown();
+		assertTrue(door.getX() == 1 && door.getY() == 1);
 		assertTrue(((Door) door).getState().openable() == false);
-		System.out.println(player.getX() +","+ player.getY());
-		//assertTrue(player.getX() == 1 && player.getY() == 0);
+		assertTrue(dungeon.canGoThere(1, 1) == false);
 	}
 	
 	@Test
