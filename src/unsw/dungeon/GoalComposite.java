@@ -36,6 +36,7 @@ public class GoalComposite implements GoalComponent {
 					return true;
 				}
 			}
+			return false;
 		}
 		return true;
 	}

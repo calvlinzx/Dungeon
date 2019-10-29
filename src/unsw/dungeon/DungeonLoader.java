@@ -55,7 +55,7 @@ public abstract class DungeonLoader {
     		if (firstLine.equals("AND")) {
     			JSONArray subgoals = json.getJSONArray("subgoals");
     			finalGoal.add(makeAndGoal(dungeon, subgoals));
-    		}else if (firstLine.equals("or")) {
+    		}else if (firstLine.equals("OR")) {
     			JSONArray subgoals = json.getJSONArray("subgoals");
     			finalGoal.add(makeOrGoal(dungeon, subgoals));
     		}
