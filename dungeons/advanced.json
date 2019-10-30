@@ -238,6 +238,11 @@
       "type": "wall"
     },
     {
+      "x": 2,
+      "y": 5,
+      "type": "portal"
+    },
+    {
       "x": 3,
       "y": 5,
       "type": "enemy"
@@ -245,7 +250,7 @@
     {
       "x": 8,
       "y": 5,
-      "type": "wall"
+      "type": "portal"
     },
     {
       "x": 17,
