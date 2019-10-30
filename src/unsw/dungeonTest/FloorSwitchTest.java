@@ -30,15 +30,30 @@ class FloorSwitchTest {
 		dungeon.addEntity(fs2);
 		assertTrue(dungeon.canGoThere(1, 1));
 		assertTrue(dungeon.canGoThere(2, 2));
+		System.out.println("FloorSwitchCanBeStepOn passed");
 	}
 	
 	@Test
 	void TriggerFloorSwitch() {
-		
+		Entity bld = new Boulder(2, 3);
+		dungeon.addEntity(bld);
+		((Boulder) bld).moveRight();
+		assertTrue(bld.getX() == 3 && bld.getY() == 3);
+		dungeon.turnSwitch();
+		assertTrue(((FloorSwitch) floorswitch).checkIsOn());
+		System.out.println("TriggerFloorSwitch passed");
 	}
 
 	@Test
 	void UntriggerFloorSwitch() {
-		
+		Entity bld = new Boulder(2, 3);
+		dungeon.addEntity(bld);
+		((Boulder) bld).moveRight();
+		dungeon.turnSwitch();
+		((Boulder) bld).moveRight();
+		assertTrue(bld.getX() == 4 && bld.getY() == 3);
+		dungeon.turnSwitch();
+		assertTrue(!((FloorSwitch) floorswitch).checkIsOn());
+		System.out.println("UntriggerFloorSwitch passed");
 	}
 }
