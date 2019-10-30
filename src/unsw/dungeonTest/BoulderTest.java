@@ -53,8 +53,7 @@ class BoulderTest {
 		dungeon.addEntity(wall);
 		((Boulder) boulder).moveUp();
 		assertTrue(boulder.getX() == 3 && boulder.getY() == 2);
-		((Boulder) boulder).moveLeft();
-		assertTrue(boulder.getX() == 2 && boulder.getY() == 2);
+		assertTrue(!dungeon.canGoThere(2, 2));
 		System.out.println("BoulderCannotMoveWalls passed");
 	}
 	
