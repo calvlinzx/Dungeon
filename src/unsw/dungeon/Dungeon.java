@@ -204,6 +204,15 @@ public class Dungeon {
     	return null;
     }
     
+	public void activePortal(int x, int y, int id) {
+		Entity entity = ifEntityOnPortal(x, y);
+		Portal portal = findPortal(x, y, id);
+		if(portal != null) {
+			entity.x().set(portal.getX());
+			entity.y().set(portal.getY());
+		}
+	}
+    
     public List<Entity> getEntities() {
 		return entities;
 	}
@@ -224,14 +233,6 @@ public class Dungeon {
     	return true;
     }
 	
-	public void activePortal(int x, int y, int id) {
-		Entity entity = ifEntityOnPortal(x, y);
-		Portal portal = findPortal(x, y, id);
-		if(portal != null) {
-			entity.x().set(portal.getX());
-			entity.y().set(portal.getY());
-		}
-	}
 
     public boolean hasEnemy() {
     	for(Entity e : entities) {
