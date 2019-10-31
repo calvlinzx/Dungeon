@@ -15,12 +15,12 @@ class PotionTest {
 	@BeforeEach
 	void init() {
 		dungeon = new Dungeon(5, 5);
-		potion = new Sword(1, 1);
+		potion = new Invincibility(1, 1);
 		dungeon.addEntity(potion);
 	}
 	
 	@Test
-	void SwordCanBeStepOn() {
+	void PotionCanBeStepOn() {
 		assertTrue(potion.getX() == 1);
 		assertTrue(potion.getY() == 1);
 		assertTrue(dungeon.canGoThere(1, 1));

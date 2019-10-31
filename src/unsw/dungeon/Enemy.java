@@ -44,7 +44,7 @@ public class Enemy extends Entity implements ObserverEnemy{
 		this.lasty = y;
 	}
 	
-	private int getDistance(int x, int y, int px, int py) {
+	public int getDistance(int x, int y, int px, int py) {
 		return Math.abs(x - px) + Math.abs(y - py);
 	}
 	
