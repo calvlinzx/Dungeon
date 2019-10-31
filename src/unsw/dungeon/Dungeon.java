@@ -162,7 +162,7 @@ public class Dungeon {
     	Entity entity2 = findEntity(x2, y2);
 		if(entity1 instanceof Wall) {
 			return false;
-		}else if (entity1 instanceof Door && ! player.hasKey()) {
+		}else if (entity1 instanceof Door && !((Door) entity1).open()) {
 			return false;
 		}else if (entity1 instanceof Boulder && entity2 instanceof Boulder) {
 			return false;

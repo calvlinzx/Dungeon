@@ -212,7 +212,10 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 	@Override
 	public void notifyDoor() {
 		for (ObserverDoor o : doorObservers) {
-            o.update(hasKey());
+			if(findKey2use() != null) {
+				if(((Door) o).getId() == ((Key) findKey2use()).getId())
+					o.update(hasKey());
+			}
         }
 	}
 

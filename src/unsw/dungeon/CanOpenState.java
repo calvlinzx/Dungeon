@@ -10,7 +10,6 @@ public class CanOpenState implements StateCanOpen {
 
 	@Override
 	public boolean openable() {
-		System.out.println("opended");
 		return true;
 	}
 

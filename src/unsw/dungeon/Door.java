@@ -14,6 +14,14 @@ public class Door extends Entity implements ObserverDoor{
 		this.state = cannotOpen;
 		this.id = id;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@Override
 	public void update(boolean hasKey) {
