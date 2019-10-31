@@ -24,11 +24,13 @@ class SwordTest {
 		assertTrue(sword.getX() == 1);
 		assertTrue(sword.getY() == 1);
 		assertTrue(dungeon.canGoThere(1, 1));
+		System.out.println("SwordCanBeStepOn passed");
 	}
 	
 	@Test
 	void SwordHasFiveHits() {
 		assertTrue(((Sword) sword).getHits() == 5);
+		System.out.println("SwordHasFiveHits passed");
 	}
 	
 	@Test
@@ -46,12 +48,27 @@ class SwordTest {
 		player.moveDown();
 		player.moveRight();
 		player.pickUp();
-		assertTrue(player.getPickups().size() == 2);
+		assertTrue(player.getPickups().size() == 1);
+		System.out.println("PlayerCannotCarryMultipleSword passed");
 	}
 	
 	@Test
 	void SwordUselessAfterFiveHits() {
+		Player player = new Player(dungeon, 0, 0);
+		dungeon.setPlayer(player);
+		dungeon.addEntity(player);
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
 		assertTrue(((Sword) sword).getHits() == 5);
+		((Sword) sword).hit();
+		((Sword) sword).hit();
+		((Sword) sword).hit();
+		((Sword) sword).hit();
+		((Sword) sword).hit();
+		assertTrue(((Sword) sword).getHits() == 0);
+		assertTrue(player.findSword2use() == null);
+		System.out.println("SwordUselessAfterFiveHits passed");
 	}
 	
 }

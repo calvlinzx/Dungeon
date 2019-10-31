@@ -59,7 +59,7 @@ public class PickUpStrategyTest {
 	void PlayerPickUpKeyTest() {
 		List<Entity> pickUps = player.getPickups();
 		assertEquals(0, pickUps.size());
-		Entity key = new Key(1, 1);
+		Entity key = new Key(1, 1, 0);
 		dungeon.addEntity(key);
 		player.moveDown();
 		player.moveRight();
@@ -91,7 +91,7 @@ public class PickUpStrategyTest {
 		assertEquals(0, pickUps.size());
 		Entity treasure = new Treasure(1, 1);
 		Entity sword = new Sword(2, 2);
-		Entity key = new Key(3, 3);
+		Entity key = new Key(3, 3, 0);
 		Entity potion = new Invincibility(4, 4);
 		dungeon.addEntity(sword);
 		dungeon.addEntity(key);
@@ -148,7 +148,7 @@ public class PickUpStrategyTest {
 	
 	@Test
 	void EnemyCannotPickUpKeyTest() {
-		Entity key = new Key(1, 1);
+		Entity key = new Key(1, 1, 0);
 		dungeon.addEntity(key);
 		((Enemy) enemy).go2position(1, 1);
 		assertTrue(dungeon.findEntity(1, 1) != null);

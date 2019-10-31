@@ -18,7 +18,7 @@ class DoorTest {
 	void init() {
 		dungeon = new Dungeon(5, 5);
 		player = new Player(dungeon, 0, 0);
-		door = new Door(1, 1);
+		door = new Door(1, 1, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
 		dungeon.addEntity(door);
@@ -47,7 +47,7 @@ class DoorTest {
 	void PlayerCanOpenDoorWithRightKey() {
 		assertTrue(door.getX() == 1 && door.getY() == 1);
 		assertTrue(((Door) door).open() == false);
-		Key key = new Key(1, 0);
+		Key key = new Key(1, 0, 0);
 		dungeon.addEntity(key);
 		player.moveRight();
 		player.pickUp();

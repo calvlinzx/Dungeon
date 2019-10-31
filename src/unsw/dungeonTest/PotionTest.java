@@ -51,7 +51,7 @@ class PotionTest {
 	
 	@Test
 	void SwordUselessAfterFiveHits() {
-		assertTrue(((Sword) sword).getHits() == 5);
+		assertTrue(((Sword) potion).getHits() == 5);
 	}
 
 }
