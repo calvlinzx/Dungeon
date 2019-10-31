@@ -124,6 +124,7 @@ public class DungeonController {
 	}
 	
 	private void doThings2node(int x, int y) {
+		dungeon.checkPortal();
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
 		}
@@ -146,9 +147,6 @@ public class DungeonController {
 				ImageView view = new ImageView(new Image("/open_door.png"));
 		        view.setId("opend door");
 				squares.add(view, x, y);
-			}
-			if(node.getId().equals("portal")) {
-				player.transport();
 			}
 		}
 		if(dungeon.checkgoal()) {

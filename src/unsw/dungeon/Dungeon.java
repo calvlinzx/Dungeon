@@ -172,7 +172,47 @@ public class Dungeon {
 		return true;
 	}
     
-    public boolean canGoThere(int x, int y) {
+    public Entity ifEntityOnPortal(int x, int y) {
+    	for(Entity e : entities) {
+    		if (e.getX() == x && e.getY() == y && !(e instanceof Portal)) {
+    			return e;
+    		}
+    	}
+    	return null;
+    }
+    
+    public boolean checkPortal() {
+    	for(Entity e : entities) {
+    		if(e instanceof Portal) {
+    			if(ifEntityOnPortal(e.getX(), e.getY()) != null) {
+    				activePortal(e.getX(), e.getY(), ((Portal) e).getId());
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
+    }
+    
+    public Portal findPortal(int x, int y, int id) {
+    	for(Entity e : entities) {
+    		if(e instanceof Portal) {
+	    		if ((e.getX() != x || e.getY() != y) && ((Portal) e).getId() == id) {
+	    			return (Portal) e;
+	    		}
+    		}
+    	}
+    	return null;
+    }
+    
+    public List<Entity> getEntities() {
+		return entities;
+	}
+
+	public void setEntities(List<Entity> entities) {
+		this.entities = entities;
+	}
+
+	public boolean canGoThere(int x, int y) {
     	Entity entity1 = findEntity(x, y);
     	if(entity1 instanceof Wall) {
 			return false;
@@ -183,6 +223,15 @@ public class Dungeon {
 		}
     	return true;
     }
+	
+	public void activePortal(int x, int y, int id) {
+		Entity entity = ifEntityOnPortal(x, y);
+		Portal portal = findPortal(x, y, id);
+		if(portal != null) {
+			entity.x().set(portal.getX());
+			entity.y().set(portal.getY());
+		}
+	}
 
     public boolean hasEnemy() {
     	for(Entity e : entities) {

@@ -256,12 +256,6 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 		dungeon.turnSwitch();
 	}
 
-	public void transport() {
-		Entity portal = dungeon.findPortal(this.getX(), this.getY());
-		this.x().set(portal.getX());
-		this.y().set(portal.getY());
-	}
-
 	public void beKilled() {
 		this.isAlive = false;
 	}
