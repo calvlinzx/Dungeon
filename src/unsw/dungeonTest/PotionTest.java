@@ -27,31 +27,18 @@ class PotionTest {
 	}
 	
 	@Test
-	void SwordHasFiveHits() {
+	void EnemyRunAwayWhenInvincible() {
 		assertTrue(((Sword) potion).getHits() == 5);
+		//
+		//
 	}
 	
-	@Test
-	void PlayerCannotCarryMultipleSword() {
-		Player player = new Player(dungeon, 0, 0);
-		Sword sw2 = new Sword(2, 2);
-		dungeon.setPlayer(player);
-		dungeon.addEntity(player);
-		dungeon.addEntity(sw2);
-		player.moveDown();
-		player.moveRight();
-		player.pickUp();
-		assertTrue(player.getPickups().size() == 1);
-		assertTrue(player.hasSword());
-		player.moveDown();
-		player.moveRight();
-		player.pickUp();
-		assertTrue(player.getPickups().size() == 2);
-	}
 	
 	@Test
-	void SwordUselessAfterFiveHits() {
-		assertTrue(((Sword) potion).getHits() == 5);
+	void PotionUselessAfterFiveSeconds() {
+		//
+		//
+		//
 	}
 
 }
