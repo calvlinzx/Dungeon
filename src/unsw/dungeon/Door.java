@@ -5,12 +5,14 @@ public class Door extends Entity implements ObserverDoor{
 	private StateCanOpen canOpen;
 	private StateCanOpen cannotOpen;
 	private StateCanOpen state;
+	private int id;
 	
-	public Door(int x, int y) {
+	public Door(int x, int y, int id) {
 		super(x, y);
 		this.canOpen = new CanOpenState(this);
 		this.cannotOpen = new CannotOpenState(this);
 		this.state = cannotOpen;
+		this.id = id;
 	}
 
 	@Override
