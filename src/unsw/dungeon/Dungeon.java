@@ -172,25 +172,14 @@ public class Dungeon {
 		return true;
 	}
     
-    public Entity ifEntityOnPortal(int x, int y) {
-    	for(Entity e : entities) {
-    		if (e.getX() == x && e.getY() == y && !(e instanceof Portal)) {
-    			return e;
-    		}
-    	}
-    	return null;
-    }
     
-    public boolean checkPortal() {
+    public void checkPortal() {
     	for(Entity e : entities) {
     		if(e instanceof Portal) {
-    			if(ifEntityOnPortal(e.getX(), e.getY()) != null) {
-    				activePortal(e.getX(), e.getY(), ((Portal) e).getId());
-    				return true;
-    			}
+    			if(((Portal) e).portalRun(this))
+    				break;
     		}
     	}
-    	return false;
     }
     
     public Portal findPortal(int x, int y, int id) {
@@ -203,15 +192,6 @@ public class Dungeon {
     	}
     	return null;
     }
-    
-	public void activePortal(int x, int y, int id) {
-		Entity entity = ifEntityOnPortal(x, y);
-		Portal portal = findPortal(x, y, id);
-		if(portal != null) {
-			entity.x().set(portal.getX());
-			entity.y().set(portal.getY());
-		}
-	}
     
     public List<Entity> getEntities() {
 		return entities;
