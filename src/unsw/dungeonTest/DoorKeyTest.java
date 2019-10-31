@@ -8,7 +8,7 @@ import unsw.dungeon.*;
 
 import org.junit.jupiter.api.Test;
 
-class DoorTest {
+class DoorKeyTest {
 	
 	Dungeon dungeon;
 	Player player;
@@ -44,6 +44,26 @@ class DoorTest {
 	} 
 	
 	@Test
+	void PlayerCannotCarryMultipleKey() {
+		Entity key1 = new Key(2, 2, 0);
+		Entity key2 = new Key(3, 3, 1);
+		dungeon.addEntity(key1);
+		dungeon.addEntity(key2);
+		player.moveDown();
+		player.moveRight();
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertTrue(player.getPickups().size() == 1);
+		assertTrue(player.hasKey());
+		player.moveDown();
+		player.moveRight();
+		player.pickUp();
+		assertTrue(player.getPickups().size() == 1);
+		System.out.println("PlayerCannotCarryMultipleKey passed");
+	}
+	
+	@Test
 	void PlayerCanOpenDoorWithRightKey() {
 		assertTrue(door.getX() == 1 && door.getY() == 1);
 		assertTrue(((Door) door).open() == false);
@@ -58,7 +78,15 @@ class DoorTest {
 	
 	@Test
 	void PlayerCannotOpenDoorWithWrongKey() {
-		// not implemented yet
+		assertTrue(door.getX() == 1 && door.getY() == 1);
+		assertTrue(((Door) door).open() == false);
+		Key key = new Key(1, 0, 1);
+		dungeon.addEntity(key);
+		player.moveRight();
+		player.pickUp();
+		player.moveDown();
+		assertTrue(player.openDoor() == false);
+		System.out.println("PlayerCannotOpenDoorWithWrongKey passed");
 	}
 	
 	@Test
@@ -68,8 +96,11 @@ class DoorTest {
 		assertTrue(((Door) door).open() == false);
 		((Door) door).doorCanOpen();
 		assertTrue(((Door) door).open() == true);
-		enemy.go2position(0, 1);
-		// assert(enemy.getX() == 1 && enemy.getY() == 1);
+		for (int i = 0; i < enemy.getDistance(3, 3, 1, 1); i++) {
+			enemy.go2position(1, 1);
+		}
+		assert(enemy.getX() == 1 && enemy.getY() == 1);
+		System.out.println("EnemyCanGoThroughOpenDoor passed");
 	}
 	
 	@Test
