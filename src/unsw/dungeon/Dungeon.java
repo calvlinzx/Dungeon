@@ -176,7 +176,7 @@ public class Dungeon {
     	Entity entity1 = findEntity(x, y);
     	if(entity1 instanceof Wall) {
 			return false;
-		}else if (entity1 instanceof Door) {
+		}else if (entity1 instanceof Door && !((Door) entity1).open()) {
 			return false;
 		}else if (entity1 instanceof Boulder) {
 			return false;

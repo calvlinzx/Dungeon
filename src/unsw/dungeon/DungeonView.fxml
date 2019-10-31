@@ -10,7 +10,7 @@
 
 <Pane fx:id="moving" minWidth="0.0" onKeyPressed="#handleKeyPress" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane fx:id="squares" alignment="BOTTOM_CENTER" layoutY="110.0" prefHeight="533.0" prefWidth="800.0">
+      <GridPane fx:id="squares" alignment="BOTTOM_CENTER" layoutY="110.0" prefHeight="533.0" prefWidth="800.0" >
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
