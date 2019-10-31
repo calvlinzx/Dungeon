@@ -87,14 +87,16 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     	this.pickups.remove(entity);
     }
     
-    public void pickUp() {
+    public boolean pickUp() {
     	Entity entity = meetEntity();
     	if(entity != null) {
 	    	if(pstrategy != null)
 	    		if(pstrategy.pickup(this, entity)) {
 	    			dungeon.removeEntity(entity);
+	    			return true;
 	    		}
     	}
+    	return false;
     }
     
     

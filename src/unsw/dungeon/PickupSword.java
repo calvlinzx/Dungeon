@@ -4,7 +4,7 @@ public class PickupSword implements PickupStrategy {
 
 	@Override
 	public boolean pickup(Player player, Entity entity) {
-		if(entity instanceof Sword) {
+		if(entity instanceof Sword && player.findSword2use() == null) {
 			player.addEntity(entity);
 			player.notifyEnemy();
 			return true;
