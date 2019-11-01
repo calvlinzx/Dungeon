@@ -18,8 +18,8 @@ class PortalTest {
 	void init() {
 		dungeon = new Dungeon(5, 5);
 		player = new Player(dungeon, 0, 0);
-		portal1 = new Portal(1, 1);
-		portal2 = new Portal(3, 3);
+		portal1 = new Portal(1, 1, 0);
+		portal2 = new Portal(3, 3, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
 		dungeon.addEntity(portal1);
@@ -29,9 +29,9 @@ class PortalTest {
 	@Test
 	void PortalCanBeStepOn() {
 		assertTrue(dungeon.findPortal(1, 1) != null);
-		assertTrue(dungeon.findPortal(4, 4) != null);
+		assertTrue(dungeon.findPortal(3, 3) != null);
 		assertTrue(dungeon.canGoThere(1, 1));
-		assertTrue(dungeon.canGoThere(4, 4));
+		assertTrue(dungeon.canGoThere(3, 3));
 		System.out.println("PortalCanBeStepOn passed");
 	}
 
@@ -40,7 +40,7 @@ class PortalTest {
 		player.moveDown();
 		player.moveRight();
 		assertTrue(player.getX() == 1 && player.getY() == 1);
-		player.transport();
+		((Portal) portal1).portalRun(dungeon);
 		assertTrue(player.getX() == 3 && player.getY() == 3);
 		System.out.println("PlayerCanBeTeleported passed");
 	}
@@ -54,19 +54,19 @@ class PortalTest {
 		player.moveDown();
 		player.moveRight();
 		assertTrue(player.getX() == 3 && player.getY() == 3);
-		player.transport();
+		((Portal) portal2).portalRun(dungeon);
 		assertTrue(player.getX() == 1 && player.getY() == 1);
 		System.out.println("PlayerCanBeTeleportedReverse passed");
 	}
 	
 	@Test
-	void EnemyCanBeTeleported() {
+	void EnemyCannotBeTeleported() {
 		// not implemented
 		System.out.println("EnemyCanBeTeleported passed");
 	}
 	
 	@Test
-	void BoulderCanBeTeleported() {
+	void BoulderCannotBeTeleported() {
 		// not implemented
 		System.out.println("BoulderCanBeTeleported passed");
 	}
