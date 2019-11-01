@@ -30,16 +30,16 @@ class EnemyTest {
 	}
 	
 	@Test
-	void ApproachPlayerOneSqrPerMove() {
+	void KillPlayerWithoutWeapon() {
 		fail("Not yet implemented");
 	}
 	
 	@Test
-	void ApproachPlayerOneSqrPerMove() {
+	void KilledByPlayerWithSword() {
 		fail("Not yet implemented");
 	}@Test
 	
-	void ApproachPlayerOneSqrPerMove() {
+	void KilledByPlayerWithPotionp() {
 		fail("Not yet implemented");
 	}
 
