@@ -21,7 +21,7 @@ public class Portal extends Entity{
 		this.oppositePortal = dungeon.findPortal(getX(), getY(), id);
 		for(Entity e : dungeon.getEntities()) {
     		if (e.getX() == getX() && e.getY() == getY() && e instanceof Player) {
-    			transportEntity(e);
+    			transportPlayer(e);
     			return true;
     		}
     	}
@@ -29,10 +29,10 @@ public class Portal extends Entity{
 	}
 	
 	
-	public void transportEntity(Entity entity) {
+	public void transportPlayer(Entity player) {
 		if(oppositePortal != null) {
-			entity.x().set(oppositePortal.getX());
-			entity.y().set(oppositePortal.getY());
+			player.x().set(oppositePortal.getX());
+			player.y().set(oppositePortal.getY());
 		}
 	}
 }
