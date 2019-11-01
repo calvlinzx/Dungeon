@@ -54,20 +54,35 @@ class PortalTest {
 		player.moveDown();
 		player.moveRight();
 		assertTrue(player.getX() == 3 && player.getY() == 3);
-		((Portal) portal2).portalRun(dungeon);
+		assertTrue(((Portal) portal2).portalRun(dungeon));
 		assertTrue(player.getX() == 1 && player.getY() == 1);
 		System.out.println("PlayerCanBeTeleportedReverse passed");
 	}
 	
 	@Test
 	void EnemyCannotBeTeleported() {
-		// not implemented
+		Entity enemy = new Enemy(dungeon, 2, 2);
+		dungeon.addEntity(enemy);
+		assertTrue(enemy.getX() == 2 && enemy.getY() == 2);
+		for (int i = 0; i < ((Enemy) enemy).getDistance(1, 1, 2, 2); i++) {
+			((Enemy) enemy).go2position(1, 1);
+		}
+		assertTrue(enemy.getX() == 1 && enemy.getY() == 1);
+		assertTrue(!((Portal) portal1).portalRun(dungeon));
+		assertTrue(enemy.getX() == 1 && enemy.getY() == 1);
 		System.out.println("EnemyCanBeTeleported passed");
 	}
 	
 	@Test
 	void BoulderCannotBeTeleported() {
-		// not implemented
+		Entity boulder = new Boulder(2, 2);
+		dungeon.addEntity(boulder);
+		assertTrue(boulder.getX() == 2 && boulder.getY() == 2);
+		((Boulder) boulder).moveUp();
+		((Boulder) boulder).moveLeft();
+		assertTrue(boulder.getX() == 1 && boulder.getY() == 1);
+		assertTrue(!((Portal) portal1).portalRun(dungeon));
+		assertTrue(boulder.getX() == 1 && boulder.getY() == 1);
 		System.out.println("BoulderCanBeTeleported passed");
 	}
 }
