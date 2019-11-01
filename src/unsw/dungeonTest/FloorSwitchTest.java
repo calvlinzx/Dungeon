@@ -16,8 +16,6 @@ class FloorSwitchTest {
 	void init() {
 		dungeon = new Dungeon(5, 5);
 		floorswitch = new FloorSwitch(3, 3);
-		//dungeon.setPlayer(player);
-		//dungeon.addEntity(player);
 		dungeon.addEntity(floorswitch);
 	}
 	

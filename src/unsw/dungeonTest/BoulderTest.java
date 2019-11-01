@@ -16,8 +16,6 @@ class BoulderTest {
 	void init() {
 		dungeon = new Dungeon(5, 5);
 		boulder = new Boulder(3, 3);
-		//dungeon.setPlayer(player);
-		//dungeon.addEntity(player);
 		dungeon.addEntity(boulder);
 	}
 	
@@ -51,8 +49,6 @@ class BoulderTest {
 	void BoulderCannotMoveWalls() {
 		Entity wall = new Wall(2, 2);
 		dungeon.addEntity(wall);
-		((Boulder) boulder).moveUp();
-		assertTrue(boulder.getX() == 3 && boulder.getY() == 2);
 		assertTrue(!dungeon.canGoThere(2, 2));
 		System.out.println("BoulderCannotMoveWalls passed");
 	}
