@@ -20,7 +20,7 @@ public class Portal extends Entity{
 	public boolean portalRun(Dungeon dungeon) {
 		this.oppositePortal = dungeon.findPortal(getX(), getY(), id);
 		for(Entity e : dungeon.getEntities()) {
-    		if (e.getX() == getX() && e.getY() == getY() && !(e instanceof Portal)) {
+    		if (e.getX() == getX() && e.getY() == getY() && e instanceof Player) {
     			transportEntity(e);
     			return true;
     		}

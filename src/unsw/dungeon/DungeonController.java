@@ -123,12 +123,12 @@ public class DungeonController {
 	    return null;
 	}
 	
-	private void doThings2node(int x, int y) {
+	private void doThings2node() {
 		dungeon.checkPortal();
 		if(dungeon.hasEnemy() && ! player.hasInvincibility()) {
 			player.notifyEnemy();
 		}
-		Node node = getNodeFromGridPane(squares, x, y);
+		Node node = getNodeFromGridPane(squares, player.getX(), player.getY());
 		if(node != null) {
 			if(node.getId().equals("sword") || node.getId().equals("treasure") || node.getId().equals("key") ||
 			   node.getId().equals("invincibility")) {
@@ -146,7 +146,7 @@ public class DungeonController {
 				squares.getChildren().remove(node);
 				ImageView view = new ImageView(new Image("/open_door.png"));
 		        view.setId("opend door");
-				squares.add(view, x, y);
+				squares.add(view, player.getX(), player.getY());
 			}
 		}
 		if(dungeon.checkgoal()) {
@@ -179,7 +179,7 @@ public class DungeonController {
         		}else {
         			player.moveUp();
         		}
-        		doThings2node(player.getX(), player.getY());
+        		doThings2node();
         	}
         	break;
         case DOWN:
@@ -191,7 +191,7 @@ public class DungeonController {
         		}else {
         			player.moveDown();
         		}
-        		doThings2node(player.getX(), player.getY());
+        		doThings2node();
         	}
         	break;
         case LEFT:
@@ -203,7 +203,7 @@ public class DungeonController {
         		}else {
         			player.moveLeft();
         		}
-        		doThings2node(player.getX(), player.getY());
+        		doThings2node();
         	}
             break;
         case RIGHT:
@@ -215,7 +215,7 @@ public class DungeonController {
         		}else {
         			player.moveRight();
         		}
-        		doThings2node(player.getX(), player.getY());
+        		doThings2node();
         	}
             break;
         default:

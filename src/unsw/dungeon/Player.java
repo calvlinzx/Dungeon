@@ -69,11 +69,14 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     	Entity entity = dungeon.findEntity(getX(), getY());
     	if(entity instanceof Key) {
     		setPickupStrategy(new PickupKey());
-    	}else if(entity instanceof Sword) {
+    	}
+    	if(entity instanceof Sword) {
     		setPickupStrategy(new PickupSword());
-    	}else if(entity instanceof Treasure) {
+    	}
+    	if(entity instanceof Treasure) {
     		setPickupStrategy(new PickupTreasure());
-    	}else if(entity instanceof Invincibility) {
+    	}
+    	if(entity instanceof Invincibility) {
     		setPickupStrategy(new PickupInvincibility());
     	}
     	return entity;
