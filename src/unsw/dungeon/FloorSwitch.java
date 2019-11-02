@@ -9,6 +9,8 @@ public class FloorSwitch extends Entity{
 	}
 	
 	public void turnOn() {
+		System.out.println("!!!");
+
 		this.fswitch = true;
 	}
 	
