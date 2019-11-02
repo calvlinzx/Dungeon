@@ -56,10 +56,11 @@ class BoulderGoalTest {
 		player.moveRight();
 		player.moveDown();
 		player.pushRight(bld2);
-		player.moveRight();		
-		//System.out.println(player.getX() + "," + player.getY());
-		//System.out.println(bld2.getX() + "," + bld2.getY());
-		//System.out.println(fs2.checkIsOn());
+		player.moveRight();
+		player.moveDown();
+		System.out.println(player.getX() + "," + player.getY());
+		System.out.println(bld2.getX() + "," + bld2.getY());
+		System.out.println(fs2.checkIsOn());
 		// ???
 		//assertTrue(dungeon.checkgoal());
 		System.out.println("CompleteSingleBoulderGoal passed");
