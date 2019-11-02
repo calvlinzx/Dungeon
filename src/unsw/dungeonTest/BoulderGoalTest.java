@@ -48,7 +48,7 @@ class BoulderGoalTest {
 		Boulder bld2 = new Boulder(2, 2);
 		FloorSwitch fs2 = new FloorSwitch(3, 2);
 		dungeon.addEntity(bld1);
-		dungeon.addEntity(bld1);
+		dungeon.addEntity(bld2);
 		dungeon.addEntity(fs1);
 		dungeon.addEntity(fs2);
 		player.moveDown();
@@ -58,12 +58,8 @@ class BoulderGoalTest {
 		player.pushRight(bld2);
 		player.moveRight();
 		player.moveDown();
-		System.out.println(player.getX() + "," + player.getY());
-		System.out.println(bld2.getX() + "," + bld2.getY());
-		System.out.println(fs2.checkIsOn());
-		// ???
-		//assertTrue(dungeon.checkgoal());
-		System.out.println("CompleteSingleBoulderGoal passed");
+		assertTrue(dungeon.checkgoal());
+		System.out.println("CompleteMultipleBoulderGoal passed");
 	}
 	
 	@Test
