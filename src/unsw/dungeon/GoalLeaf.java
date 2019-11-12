@@ -17,12 +17,6 @@ public class GoalLeaf implements GoalComponent {
 	}
 
 	@Override
-	public void remove(GoalComponent component) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public boolean checkgoals() {
 		if(goal.equals("exit")) {
 			return dungeon.checkExit();
