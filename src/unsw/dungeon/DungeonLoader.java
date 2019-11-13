@@ -104,6 +104,22 @@ public abstract class DungeonLoader {
     }
     
     private GoalLeaf makeLeaf(String goal, Dungeon dungeon) {
+    	/*GoalComponent leaf = null;
+    	switch (goal) {
+    	case "exit":
+    		leaf = new GoalExit(dungeon);
+    		break;
+    	case "enemys":
+    		leaf = new GoalEnemy(dungeon);
+    		break;
+    	case "boulders":
+    		leaf = new GoalEnemy(dungeon);	
+    		break;
+    	case "treasure":
+    		leaf = new GoalTreasure(dungeon);
+    		break;
+    	}
+    	return leaf;*/
     	return new GoalLeaf(goal, dungeon);
     }
 
