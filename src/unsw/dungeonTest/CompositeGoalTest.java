@@ -23,10 +23,10 @@ class CompositeGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		treasureGoal = new GoalLeaf("treasure", dungeon);
-		boulderGoal = new GoalLeaf("boulders", dungeon);
-		exitGoal = new GoalLeaf("exit", dungeon);
-		enemyGoal = new GoalLeaf("enemies", dungeon);
+		treasureGoal = new GoalTreasure(dungeon);
+		boulderGoal = new GoalBoulder(dungeon);
+		exitGoal = new GoalExit(dungeon);
+		enemyGoal = new GoalEnemy(dungeon);
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ class CompositeGoalTest {
 		goals.add(exitGoal);
 		goals.add(enemyGoal);
 		dungeon.addGoal(goals);
-		assertTrue(dungeon.getGameGuide().equals("[(pick up all the treasure) and\n" + "(turn on all the floor switches) and\n" + "(getting to exit) and\n" + "(kill all enemies)]"));           
+		assertTrue(dungeon.getGameGuide().equals("[(pick up all treasure) and\n" + "(turn on all floor switches) and\n" + "(getting to exit) and\n" + "(kill all enemies)]"));           
 		System.out.println("ShowANDGoals passed");
 	}
 	
@@ -49,7 +49,7 @@ class CompositeGoalTest {
 		goals.add(exitGoal);
 		goals.add(enemyGoal);
 		dungeon.addGoal(goals);
-		assertTrue(dungeon.getGameGuide().equals("[(pick up all the treasure) or\n" + "(turn on all the floor switches) or\n" + "(getting to exit) or\n" + "(kill all enemies)]"));           
+		assertTrue(dungeon.getGameGuide().equals("[(pick up all treasure) or\n" + "(turn on all floor switches) or\n" + "(getting to exit) or\n" + "(kill all enemies)]"));           
 		System.out.println("ShowORGoals passed");
 	}
 	
@@ -65,7 +65,7 @@ class CompositeGoalTest {
 		goals.add(goal1);
 		goals.add(goal2);
 		dungeon.addGoal(goals);
-		assertTrue(dungeon.getGameGuide().equals("[[(pick up all the treasure) and\n" + "(getting to exit)] or\n" + "[(turn on all the floor switches) and\n" + "(kill all enemies)]]"));           
+		assertTrue(dungeon.getGameGuide().equals("[[(pick up all treasure) and\n" + "(getting to exit)] or\n" + "[(turn on all floor switches) and\n" + "(kill all enemies)]]"));           
 		System.out.println("ShowComplexGoals passed");
 	}
 	

@@ -11,7 +11,7 @@ class EnemyGoalTest {
 
 	Dungeon dungeon;
 	Player player;
-	GoalLeaf enemyGoal;
+	GoalEnemy enemyGoal;
 	
 	@BeforeEach
 	void init() {
@@ -19,7 +19,7 @@ class EnemyGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		enemyGoal = new GoalLeaf("enemies", dungeon);
+		enemyGoal = new GoalEnemy(dungeon);
 		dungeon.addGoal(enemyGoal);
 	}
 	

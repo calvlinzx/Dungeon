@@ -1,4 +1,4 @@
-package unsw.dungeon;
+/*package unsw.dungeon;
 
 public class GoalLeaf implements GoalComponent {
 	
@@ -39,7 +39,12 @@ public class GoalLeaf implements GoalComponent {
 		if(goal.equals("exit")) {
 			ret += "(getting to exit)";
 		}
-		if(goal.equals("enemies")) {
+		if(goal.equals("en
+
+
+
+
+emies")) {
 			ret += "(kill all enemies)";
 		}
 		if (goal.equals("boulders")) {
@@ -51,4 +56,4 @@ public class GoalLeaf implements GoalComponent {
 		return ret;
 	}
 
-}
+}*/

@@ -11,7 +11,7 @@ class BoulderGoalTest {
 
 	Dungeon dungeon;
 	Player player;
-	GoalLeaf boulderGoal;
+	GoalBoulder boulderGoal;
 	
 	@BeforeEach
 	void init() {
@@ -19,7 +19,7 @@ class BoulderGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		boulderGoal = new GoalLeaf("boulders", dungeon);
+		boulderGoal = new GoalBoulder(dungeon);
 		dungeon.addGoal(boulderGoal);
 	}
 	

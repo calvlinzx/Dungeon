@@ -11,7 +11,7 @@ class ExitGoalTest {
 
 	Dungeon dungeon;
 	Player player;
-	GoalLeaf exitGoal;
+	GoalExit exitGoal;
 	
 	@BeforeEach
 	void init() {
@@ -19,7 +19,7 @@ class ExitGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		exitGoal = new GoalLeaf("exit", dungeon);
+		exitGoal = new GoalExit(dungeon);
 		dungeon.addGoal(exitGoal);
 	}
 	

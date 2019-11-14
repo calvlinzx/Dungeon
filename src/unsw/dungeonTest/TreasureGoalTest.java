@@ -11,7 +11,7 @@ class TreasureGoalTest {
 
 	Dungeon dungeon;
 	Player player;
-	GoalLeaf treasureGoal;
+	GoalTreasure treasureGoal;
 	
 	@BeforeEach
 	void init() {
@@ -19,13 +19,13 @@ class TreasureGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		treasureGoal = new GoalLeaf("treasure", dungeon);
+		treasureGoal = new GoalTreasure(dungeon);
 		dungeon.addGoal(treasureGoal);
 	}
 	
 	@Test
 	void ShowTreasureGoal() {
-		assertTrue(dungeon.getGameGuide().equals("(pick up all the treasure)"));
+		assertTrue(dungeon.getGameGuide().equals("(pick up all treasure)"));
 		System.out.println("ShowTreasureGoal passed");
 	}
 	
