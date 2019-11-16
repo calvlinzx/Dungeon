@@ -31,12 +31,12 @@ public class HomepageController {
 	
 	@FXML
 	void go2level4(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
+		go2newScene("door.json");
 	}
 	
 	@FXML
 	void go2level5(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
+		go2newScene("enemy.json");
 	}
 	
 	@FXML

@@ -14,12 +14,6 @@
     },
     {
       "x": 2,
-      "y": 2,
-      "id": 2,
-      "type": "door"
-    },
-    {
-      "x": 2,
       "y": 0,
       "type": "wall"
     },
@@ -108,31 +102,13 @@
       "y": 1,
       "type": "player"
     },
-    {
-     "x": 2,
-     "y": 3,
-     "id": 2, 
-     "type": "key"
-    },
-    {
+{
       "x": 2,
-      "y": 1,
-      "id": 1,
-      "type": "key"
-    },
-    {
-      "x": 3,
-      "y": 1,
-      "id": 1,
-      "type": "door"
-    },
-    {
-      "x": 6,
       "y": 1,
       "type": "sword"
     },
     {
-      "x": 7,
+      "x": 6,
       "y": 1,
       "type": "sword"
     },
@@ -149,7 +125,7 @@
     {
       "x": 3,
       "y": 2,
-      "type": "sword"
+      "type": "wall"
     },
     {
       "x": 6,
@@ -192,16 +168,6 @@
       "type": "wall"
     },
     {
-      "x": 16,
-      "y": 2,
-      "type": "enemy"
-    },
-    {
-      "x": 16,
-      "y": 4,
-      "type": "enemy"
-    },
-    {
       "x": 17,
       "y": 2,
       "type": "wall"
@@ -242,6 +208,11 @@
       "type": "wall"
     },
     {
+      "x": 13,
+      "y": 4,
+      "type": "enemy"
+    },
+    {
       "x": 17,
       "y": 4,
       "type": "wall"
@@ -252,16 +223,14 @@
       "type": "wall"
     },
     {
-      "x": 2,
+      "x": 3,
       "y": 5,
-      "id": 1,
-      "type": "portal"
+      "type": "sword"
     },
     {
       "x": 8,
       "y": 5,
-      "id": 1,
-      "type": "portal"
+      "type": "wall"
     },
     {
       "x": 17,

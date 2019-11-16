@@ -25,7 +25,6 @@ public class GoalTreasure implements GoalComponent, ObserverGoal{
 
 	@Override
 	public boolean checkgoals() {
-		// to be changed later
 		return this.total == this.collected;
 	}
 
