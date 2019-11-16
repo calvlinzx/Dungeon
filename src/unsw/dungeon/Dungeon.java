@@ -82,6 +82,14 @@ public class Dungeon {
     	return null;
     }
     
+    public void printEntity(int x, int y) {
+    	for (Entity e : entities) {
+    		if (e.getX() == x && e.getY() == y) {
+    			System.out.println(e);
+    		}
+    	}
+    }
+    
     public Entity findSwitch(int x, int y) {
     	for(Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && e instanceof FloorSwitch) {
