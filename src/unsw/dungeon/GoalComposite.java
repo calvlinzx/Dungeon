@@ -49,12 +49,6 @@ public class GoalComposite implements GoalComponent {
 	}
 
 	@Override
-	public void remove(GoalComponent component) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String getInfo() {
 		String ret = "[";
 		if (goal.equals("main goal")) {
