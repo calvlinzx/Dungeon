@@ -14,7 +14,7 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     private List<Entity> pickups;
     private PickupStrategy pstrategy;
     private List<ObserverEnemy> enemyObservers;
-    private UsePropStrategy useProp;
+    //private UsePropStrategy useProp;
     private List<ObserverDoor> doorObservers;
     private boolean isAlive;
     
@@ -56,11 +56,11 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     public void setPickupStrategy(PickupStrategy pstrategy){
     	this.pstrategy = pstrategy;
     }
-    
+    /*
     public void setUsePropStrategy(UsePropStrategy useProp) {
     	this.useProp = useProp;
     }
-    
+    */
     public List<Entity> getPickups(){
     	return pickups;
     }
@@ -117,8 +117,12 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 	    	boolean ret =  ((Enemy) enemy).meetPlayer(this);
 	    	if (ret) {
 	    		if(! hasInvincibility()) {
-		    		setUsePropStrategy(new UseSword());
-		    		useProp.useProp(this, findSword2use());
+		    		//setUsePropStrategy(new UseSword());
+		    		//useProp.useProp(this, findSword2use());
+	    			Entity sword = findSword2use();
+	    			if (sword != null) {
+	    				((Sword) sword).use(this);
+	    			}
 	    		}
 	    		dungeon.removeEntity(enemy);
 	    		return ret;
@@ -134,9 +138,13 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     	if(door != null && door instanceof Door) {
     		boolean ret = ((Door)door).open();
     		if(ret) {
-	    		setUsePropStrategy(new UseKey());
-	    		useProp.useProp(this, findKey2use());
-	    		dungeon.removeEntity(door);
+	    		//setUsePropStrategy(new UseKey());
+	    		//useProp.useProp(this, findKey2use());
+	    		Entity key = findKey2use();
+	    		if (key != null) {
+	    			((Key) key).use();
+	    		}
+    			dungeon.removeEntity(door);
     		}
     		return ret;
     	}
@@ -147,8 +155,9 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     public void useInvincibility() {
     	if(hasInvincibility()) {
     		Entity potion = findInvincibility2use();
-    		setUsePropStrategy(new UseInvincibility());
-    		useProp.useProp(this, potion);
+    		//setUsePropStrategy(new UseInvincibility());
+    		//useProp.useProp(this, potion);
+    		((Invincibility) potion).use(this);
     		dungeon.removeEntity(potion);
     	}
     }
