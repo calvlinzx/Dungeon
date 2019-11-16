@@ -1,4 +1,3 @@
-/*
 package unsw.dungeonTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +19,9 @@ class ExitGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		exitGoal = new GoalExit(dungeon);
+		Exit exit = new Exit(4, 4);
+		dungeon.addEntity(exit);
+		exitGoal = new GoalExit(player, exit);
 		dungeon.addGoal(exitGoal);
 	}
 	
@@ -32,8 +33,6 @@ class ExitGoalTest {
 	
 	@Test
 	void CompleteExitGoal() {
-		Exit exit = new Exit(4, 4);
-		dungeon.addEntity(exit);
 		player.moveDown();
 		player.moveRight();
 		player.moveDown();
@@ -48,8 +47,6 @@ class ExitGoalTest {
 	
 	@Test
 	void FailExitGoal() {
-		Exit exit = new Exit(4, 4);
-		dungeon.addEntity(exit);
 		player.moveDown();
 		player.moveRight();
 		player.moveDown();
@@ -60,4 +57,4 @@ class ExitGoalTest {
 		System.out.println("FailExitGoal passed");
 	}
 
-}*/
+}

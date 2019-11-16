@@ -19,8 +19,6 @@ class TreasureGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		//treasureGoal = new GoalTreasure(dungeon);
-		//dungeon.addGoal(treasureGoal);
 	}
 	
 	@Test

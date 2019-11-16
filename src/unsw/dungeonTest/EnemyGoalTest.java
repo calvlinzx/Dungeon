@@ -19,12 +19,14 @@ class EnemyGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		enemyGoal = new GoalEnemy(dungeon);
-		dungeon.addGoal(enemyGoal);
+		//enemyGoal = new GoalEnemy(dungeon);
+		//dungeon.addGoal(enemyGoal);
 	}
 	
 	@Test
 	void ShowEnemyGoal() {
+		enemyGoal = new GoalEnemy(1);
+		dungeon.addGoal(enemyGoal);
 		assertTrue(dungeon.getGameGuide().equals("(kill all enemies)"));
 		System.out.println("ShowEnemyGoal passed");
 	}
@@ -34,6 +36,9 @@ class EnemyGoalTest {
 		Enemy enemy = new Enemy(dungeon, 4, 4);
 		dungeon.addEntity(enemy);
 		dungeon.setEnemyObserver();
+		enemyGoal = new GoalEnemy(1);
+		dungeon.addGoal(enemyGoal);
+		dungeon.setObserverEnemyGoal(enemyGoal);
 		Sword sword = new Sword(1, 1);
 		dungeon.addEntity(sword);
 		player.moveDown();
@@ -57,6 +62,9 @@ class EnemyGoalTest {
 		dungeon.addEntity(enemy1);
 		dungeon.addEntity(enemy2);
 		dungeon.setEnemyObserver();
+		enemyGoal = new GoalEnemy(2);
+		dungeon.addGoal(enemyGoal);
+		dungeon.setObserverEnemyGoal(enemyGoal);
 		Sword sword = new Sword(1, 1);
 		dungeon.addEntity(sword);
 		player.moveDown();
@@ -79,6 +87,9 @@ class EnemyGoalTest {
 		Enemy enemy = new Enemy(dungeon, 4, 4);
 		dungeon.addEntity(enemy);
 		dungeon.setEnemyObserver();
+		enemyGoal = new GoalEnemy(1);
+		dungeon.addGoal(enemyGoal);
+		dungeon.setObserverEnemyGoal(enemyGoal);
 		player.moveDown();
 		player.notifyEnemy();
 		player.moveRight();
