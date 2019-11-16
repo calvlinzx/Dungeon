@@ -1,3 +1,4 @@
+/*
 package unsw.dungeon;
 
 public class UseInvincibility implements UsePropStrategy {
@@ -9,4 +10,4 @@ public class UseInvincibility implements UsePropStrategy {
 		p1.start();
 		p2.start();
 	}
-}
+}*/

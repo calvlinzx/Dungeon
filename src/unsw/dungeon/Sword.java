@@ -18,6 +18,10 @@ public class Sword extends Entity{
 	public int getHits() {
 		return hits;
 	}
-
+	
+	public void use(Player player) {
+		this.hit();
+		player.notifyEnemy();
+	}
 }
 

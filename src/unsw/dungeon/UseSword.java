@@ -1,3 +1,4 @@
+/*
 package unsw.dungeon;
 
 public class UseSword implements UsePropStrategy {
@@ -10,4 +11,4 @@ public class UseSword implements UsePropStrategy {
 		}
 	}
 
-}
+}*/
