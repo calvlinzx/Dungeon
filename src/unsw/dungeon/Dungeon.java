@@ -223,6 +223,20 @@ public class Dungeon {
     	return true;
     }
 	
+	public boolean enemyCanGoThere(int x, int y) {
+    	Entity entity1 = findEntity(x, y);
+    	if(entity1 instanceof Wall) {
+			return false;
+		}else if (entity1 instanceof Door) {
+			return false;
+		}else if (entity1 instanceof Boulder) {
+			return false;
+		}
+    	return true;
+    }
+	
+	
+	
 
     public boolean hasEnemy() {
     	for(Entity e : entities) {

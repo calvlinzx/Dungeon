@@ -117,8 +117,6 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 	    	boolean ret =  ((Enemy) enemy).meetPlayer(this);
 	    	if (ret) {
 	    		if(! hasInvincibility()) {
-		    		//setUsePropStrategy(new UseSword());
-		    		//useProp.useProp(this, findSword2use());
 	    			Entity sword = findSword2use();
 	    			if (sword != null) {
 	    				((Sword) sword).use(this);
@@ -139,11 +137,9 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
     	if(door != null && door instanceof Door) {
     		boolean ret = ((Door)door).open();
     		if(ret) {
-	    		//setUsePropStrategy(new UseKey());
-	    		//useProp.useProp(this, findKey2use());
 	    		Entity key = findKey2use();
 	    		if (key != null) {
-	    			((Key) key).use();
+	    			((Key) key).use((Door) door);
 	    		}
     			dungeon.removeEntity(door);
     		}

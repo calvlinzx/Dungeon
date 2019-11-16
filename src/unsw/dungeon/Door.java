@@ -45,5 +45,6 @@ public class Door extends Entity implements ObserverDoor{
 	public boolean open() {
 		return state.openable();
 	}
+	
 
 }

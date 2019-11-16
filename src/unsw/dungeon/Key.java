@@ -11,7 +11,7 @@ public class Key extends Entity {
 		this.canUse = true;
 	}
 	
-	public void use() {
+	public void use(Door door) {
 		canUse = false;
 	}
 	
@@ -26,6 +26,5 @@ public class Key extends Entity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 
 }
