@@ -44,8 +44,8 @@ class BoulderGoalTest {
 	@Test
 	void CompleteMultipleBoulderGoal() {
 		Boulder bld1 = new Boulder(1, 1);
-		FloorSwitch fs1 = new FloorSwitch(2, 1);
 		Boulder bld2 = new Boulder(2, 2);
+		FloorSwitch fs1 = new FloorSwitch(2, 1);
 		FloorSwitch fs2 = new FloorSwitch(3, 2);
 		dungeon.addEntity(bld1);
 		dungeon.addEntity(bld2);
