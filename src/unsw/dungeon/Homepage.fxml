@@ -15,8 +15,6 @@
       <Button fx:id="level6" layoutX="367.0" layoutY="250.0" mnemonicParsing="false" onAction="#go2level6" text="Level 6" />
       <Button fx:id="level7" layoutX="133.0" layoutY="301.0" mnemonicParsing="false" onAction="#go2level7" text="Level 7" />
       <Button fx:id="level8" layoutX="367.0" layoutY="301.0" mnemonicParsing="false" onAction="#go2level8" text="Level 8" />
-      <Button fx:id="level9" layoutX="133.0" layoutY="350.0" mnemonicParsing="false" onAction="#go2level9" text="Level 9" />
-      <Button fx:id="level10" layoutX="367.0" layoutY="350.0" mnemonicParsing="false" onAction="#go2level10" text="Level 10" />
       <Label layoutX="111.0" layoutY="26.0" text="Welcome to Dungeon" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="35.0" />

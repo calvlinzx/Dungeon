@@ -77,16 +77,16 @@ public class Enemy extends Entity implements ObserverEnemy, SubjectGoal{
 	public void runAway(int x, int y) {
 		if(getX() >= x) {
 			if(getY() < y) {
-				go2position(x+10, y-10);
+				go2position(x+20, y-20);
 			}else {
-				go2position(x+10, y+10);
+				go2position(x+20, y+20);
 			}
 		}
 		if(getX() < x) {
 			if(getY() < y) {
-				go2position(x-10, y-10);
+				go2position(x-20, y-20);
 			}else {
-				go2position(x-10, y+10);
+				go2position(x-20, y+20);
 			}
 		}
 	}

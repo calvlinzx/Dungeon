@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class HomepageController {
 	@FXML
-	private Button level1, level2, level3, level4, level5, level6, level7, level8, level9, level10;
+	private Button level1, level2, level3, level4, level5, level6, level7, level8;
 
 	@FXML
 	void go2level1(ActionEvent event) throws IOException {
@@ -41,26 +41,16 @@ public class HomepageController {
 	
 	@FXML
 	void go2level6(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
+		go2newScene("Level6.json");
 	}
 	
 	@FXML
 	void go2level7(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
+		go2newScene("Level7.json");
 	}
 	
 	@FXML
 	void go2level8(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
-	}
-	
-	@FXML
-	void go2level9(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
-	}
-	
-	@FXML
-	void go2level10(ActionEvent event) throws IOException {
 		go2newScene("advanced.json");
 	}
 	
