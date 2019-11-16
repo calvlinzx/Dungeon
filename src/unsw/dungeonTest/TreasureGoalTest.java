@@ -19,12 +19,14 @@ class TreasureGoalTest {
 		player = new Player(dungeon, 0, 0);
 		dungeon.setPlayer(player);
 		dungeon.addEntity(player);
-		treasureGoal = new GoalTreasure(dungeon);
-		dungeon.addGoal(treasureGoal);
+		//treasureGoal = new GoalTreasure(dungeon);
+		//dungeon.addGoal(treasureGoal);
 	}
 	
 	@Test
 	void ShowTreasureGoal() {
+		treasureGoal = new GoalTreasure(1);
+		dungeon.addGoal(treasureGoal);
 		assertTrue(dungeon.getGameGuide().equals("(pick up all treasure)"));
 		System.out.println("ShowTreasureGoal passed");
 	}
@@ -33,6 +35,9 @@ class TreasureGoalTest {
 	void CompleteSingleTreasureGoal() {
 		Treasure trea = new Treasure(1, 1);
 		dungeon.addEntity(trea);
+		treasureGoal = new GoalTreasure(1);
+		dungeon.setObserverTreasureGoal(treasureGoal);
+		dungeon.addGoal(treasureGoal);
 		player.moveDown();
 		player.moveRight();
 		player.pickUp();
@@ -48,6 +53,9 @@ class TreasureGoalTest {
 		dungeon.addEntity(trea1);
 		dungeon.addEntity(trea2);
 		dungeon.addEntity(trea3);
+		treasureGoal = new GoalTreasure(3);
+		dungeon.setObserverTreasureGoal(treasureGoal);
+		dungeon.addGoal(treasureGoal);
 		player.moveDown();
 		player.moveRight();
 		player.pickUp();
@@ -67,6 +75,9 @@ class TreasureGoalTest {
 		Treasure trea2 = new Treasure(2, 2);
 		dungeon.addEntity(trea1);
 		dungeon.addEntity(trea2);
+		treasureGoal = new GoalTreasure(2);
+		dungeon.setObserverTreasureGoal(treasureGoal);
+		dungeon.addGoal(treasureGoal);
 		player.moveDown();
 		player.moveRight();
 		player.pickUp();

@@ -1,6 +1,8 @@
 package unsw.dungeon;
 
-public class Enemy extends Entity implements ObserverEnemy{
+import java.util.ArrayList;
+
+public class Enemy extends Entity implements ObserverEnemy, SubjectGoal{
 	
 	private StateKillable canBeKilled;
 	private StateKillable cannotBeKilled;
@@ -8,6 +10,7 @@ public class Enemy extends Entity implements ObserverEnemy{
 	private Dungeon dungeon;
 	private int lastx;
 	private int lasty;
+	private ArrayList<ObserverGoal> observers;
 
 	public Enemy(Dungeon dungeon, int x, int y) {
 		super(x, y);
@@ -17,6 +20,7 @@ public class Enemy extends Entity implements ObserverEnemy{
 		this.state = cannotBeKilled;
 		this.lastx = x;
 		this.lasty = y;
+		this.observers = new ArrayList<ObserverGoal>();
 	}
 
 	@Override
@@ -124,5 +128,24 @@ public class Enemy extends Entity implements ObserverEnemy{
 	
 	public boolean meetPlayer(Entity player) {
 		return state.meetPlayer(dungeon.getPlayer());
+	}
+
+	@Override
+	public void registerGoalObserver(ObserverGoal o) {
+		// TODO Auto-generated method stub
+		observers.add(o);
+	}
+
+	@Override
+	public void removeGoalObserver(ObserverGoal o) {
+		// TODO Auto-generated method stub
+		observers.remove(o);
+	}
+
+	@Override
+	public void notifyGoal() {
+		for (ObserverGoal o : observers) {
+			o.update(this);
+		}
 	}
 }

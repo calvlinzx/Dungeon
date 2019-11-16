@@ -124,6 +124,7 @@ public class Player extends Entity implements SubjectEnemy, SubjectDoor{
 	    				((Sword) sword).use(this);
 	    			}
 	    		}
+	    		((Enemy) enemy).notifyGoal();
 	    		dungeon.removeEntity(enemy);
 	    		return ret;
 	    	}else {

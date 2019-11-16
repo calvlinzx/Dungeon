@@ -3,11 +3,13 @@ package unsw.dungeon;
 public class GoalExit implements GoalComponent{
 	
 	private String goal;
-	private Dungeon dungeon;
+	private Player player;
+	private Exit exit;
 	
-	public GoalExit(Dungeon dungeon) {
+	public GoalExit(Player player, Exit exit) {
 		this.goal = "exit";
-		this.dungeon = dungeon;
+		this.player = player;
+		this.exit = exit;
 	}
 
 	@Override
@@ -18,7 +20,7 @@ public class GoalExit implements GoalComponent{
 	@Override
 	public boolean checkgoals() {
 		// to be changed later
-		return dungeon.checkExit();
+		return player.getX() == exit.getX() && player.getY() == exit.getY();
 	}
 
 	@Override

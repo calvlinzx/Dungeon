@@ -1,13 +1,15 @@
 package unsw.dungeon;
 
-public class GoalEnemy implements GoalComponent{
+public class GoalEnemy implements GoalComponent, ObserverGoal{
 	
 	private String goal;
-	private Dungeon dungeon;
+	private int total;
+	private int dead;
 	
-	public GoalEnemy(Dungeon dungeon) {
+	public GoalEnemy(int total) {
 		this.goal = "enemies";
-		this.dungeon = dungeon;
+		this.total = total;
+		this.dead = 0;
 	}
 	
 	@Override
@@ -23,8 +25,14 @@ public class GoalEnemy implements GoalComponent{
 
 	@Override
 	public boolean checkgoals() {
-		// to be changed later
-		return !dungeon.hasEnemy();
+		return this.total == this.dead;
+	}
+
+	@Override
+	public void update(Entity entity) {
+		if (entity instanceof Enemy) {
+			this.dead++;
+		}
 	}
 
 }

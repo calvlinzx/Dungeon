@@ -25,7 +25,7 @@ class BoulderGoalTest {
 	
 	@Test
 	void ShowBoulderGoal() {
-		assertTrue(dungeon.getGameGuide().equals("(turn on all the floor switches)"));
+		assertTrue(dungeon.getGameGuide().equals("(turn on all floor switches)"));
 		System.out.println("ShowBoulderGoal passed");
 	}
 	

@@ -1,3 +1,4 @@
+/*
 package unsw.dungeonTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,4 +60,4 @@ class ExitGoalTest {
 		System.out.println("FailExitGoal passed");
 	}
 
-}
+}*/

@@ -1,12 +1,16 @@
 package unsw.dungeon;
 
-public class GoalBoulder implements GoalComponent{
+public class GoalBoulder implements GoalComponent, ObserverGoal{
 	
 	private String goal;
+	private int total;
+	private int pushed;
 	private Dungeon dungeon;
 	
 	public GoalBoulder(Dungeon dungeon) {
 		this.goal = "boulders";
+		this.total = 0;
+		this.pushed = 0;
 		this.dungeon = dungeon;
 	}
 	
@@ -23,7 +27,20 @@ public class GoalBoulder implements GoalComponent{
 
 	@Override
 	public boolean checkgoals() {
-		// to be changed later
+		//return this.pushed == this.total;
 		return dungeon.checkSwitch();
+	}
+
+	@Override
+	public void update(Entity entity) {
+		if (entity instanceof FloorSwitch) {
+			System.out.println(this.pushed);
+			if (((FloorSwitch) entity).checkIsOn()) {
+				this.pushed++;
+			}
+			else {
+				//this.pushed--;
+			}
+		}
 	}
 }

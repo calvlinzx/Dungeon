@@ -105,9 +105,11 @@ public class Dungeon {
     		if(e instanceof FloorSwitch) {
     			if (findBoulder(e.getX(), e.getY()) instanceof Boulder) {
     				((FloorSwitch) e).update(true);
+    				//((FloorSwitch) e).notifyGoal();
     			}else {
     				((FloorSwitch) e).update(false);
     			}
+    			((FloorSwitch) e).notifyGoal();
     		}
     	}
     }
@@ -240,7 +242,75 @@ public class Dungeon {
 		return false;
 	}
 	
+	public Exit getExit() {
+		for(Entity e : this.entities) {
+			if (e instanceof Exit) {
+				return (Exit) e;
+			}
+		}
+		return null;
+	}
+	
+	public int getEnemyCount() {
+		int count = 0;
+		for(Entity e : this.entities) {
+			if (e instanceof Enemy) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int getTreasureCount() {
+		int count = 0;
+		for(Entity e : this.entities) {
+			if (e instanceof Treasure) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int getBoulderCount() {
+		int count = 0;
+		for(Entity e : this.entities) {
+			if (e instanceof Boulder) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public void setObserverEnemyGoal(GoalEnemy goal) {
+		for (Entity e : entities) {
+			if (e instanceof Enemy) {
+				Enemy enemy = (Enemy) e;
+				enemy.registerGoalObserver(goal);
+			}
+		}
+		
+	}
+	
+	public void setObserverTreasureGoal(GoalTreasure goal) {
+		for (Entity e : entities) {
+			if (e instanceof Treasure) {
+				((Treasure) e).registerGoalObserver(goal);
+			}
+		}
+		
+	}
+	
+	public void setObserverBoulderGoal(GoalBoulder goal) {
+		for (Entity e : entities) {
+			if (e instanceof FloorSwitch) {
+				((FloorSwitch) e).registerGoalObserver(goal);
+			}
+		}
+		
+	}
+	
 	public String getGameGuide() {
 		return goal.getInfo();
 	}
+
 }

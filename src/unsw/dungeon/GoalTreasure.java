@@ -1,13 +1,15 @@
 package unsw.dungeon;
 
-public class GoalTreasure implements GoalComponent{
+public class GoalTreasure implements GoalComponent, ObserverGoal{
 	
 	private String goal;
-	private Dungeon dungeon;
+	private int total;
+	private int collected;
 	
-	public GoalTreasure(Dungeon dungeon) {
+	public GoalTreasure(int total) {
 		this.goal = "treasure";
-		this.dungeon = dungeon;
+		this.total = total;
+		this.collected = 0;
 	}
 	
 	@Override
@@ -24,6 +26,13 @@ public class GoalTreasure implements GoalComponent{
 	@Override
 	public boolean checkgoals() {
 		// to be changed later
-		return !dungeon.hasTreasure();
+		return this.total == this.collected;
+	}
+
+	@Override
+	public void update(Entity entity) {
+		if (entity instanceof Treasure) {
+			this.collected++;
+		}
 	}
 }

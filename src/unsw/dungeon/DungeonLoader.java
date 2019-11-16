@@ -108,21 +108,49 @@ public abstract class DungeonLoader {
     	GoalComponent leaf = null;
     	switch (goal) {
     	case "exit":
-    		leaf = new GoalExit(dungeon);
+    		leaf = createExitGoal(dungeon);
     		break;
     	case "enemies":
-    		leaf = new GoalEnemy(dungeon);
+    		leaf = createEnemyGoal(dungeon);
     		break;
     	case "boulders":
-    		leaf = new GoalBoulder(dungeon);	
+    		leaf = createBoulderGoal(dungeon);	
     		break;
     	case "treasure":
-    		leaf = new GoalTreasure(dungeon);
+    		leaf = createTreasureGoal(dungeon);
     		break;
     	}
     	return leaf;
     	//return new GoalLeaf(goal, dungeon);
     }
+    
+    private GoalExit createExitGoal(Dungeon dungeon) {
+		Exit exit = dungeon.getExit();
+		Player player = dungeon.getPlayer();
+		GoalExit eg = new GoalExit(player, exit);
+		return eg;
+	}
+    
+    private GoalEnemy createEnemyGoal(Dungeon dungeon) {
+		int count = dungeon.getEnemyCount();
+		GoalEnemy eg = new GoalEnemy(count);
+		dungeon.setObserverEnemyGoal(eg);
+		return eg;
+	}
+    
+    private GoalBoulder createBoulderGoal(Dungeon dungeon) {
+		//int count = dungeon.getBoulderCount();
+		GoalBoulder sg = new GoalBoulder(dungeon);
+		//dungeon.setObserverBoulderGoal(sg);
+		return sg;
+	}
+    
+    private GoalTreasure createTreasureGoal(Dungeon dungeon) {
+		int count = dungeon.getTreasureCount();
+		GoalTreasure tg = new GoalTreasure(count);
+		dungeon.setObserverTreasureGoal(tg);
+		return tg;
+	}
 
     private void loadEntity(Dungeon dungeon, JSONObject json) {
         String type = json.getString("type");
