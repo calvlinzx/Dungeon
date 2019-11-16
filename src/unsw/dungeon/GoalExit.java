@@ -12,7 +12,7 @@ public class GoalExit implements GoalComponent{
 
 	@Override
 	public String getInfo() {
-		return "(get to exit)";
+		return "(getting to exit)";
 	}
 
 	@Override

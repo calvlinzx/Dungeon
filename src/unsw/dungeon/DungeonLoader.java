@@ -103,8 +103,25 @@ public abstract class DungeonLoader {
     	return subcomposite;
     }
     
-    private GoalLeaf makeLeaf(String goal, Dungeon dungeon) {
-    	return new GoalLeaf(goal, dungeon);
+    private GoalComponent makeLeaf(String goal, Dungeon dungeon) {
+    	
+    	GoalComponent leaf = null;
+    	switch (goal) {
+    	case "exit":
+    		leaf = new GoalExit(dungeon);
+    		break;
+    	case "enemies":
+    		leaf = new GoalEnemy(dungeon);
+    		break;
+    	case "boulders":
+    		leaf = new GoalBoulder(dungeon);	
+    		break;
+    	case "treasure":
+    		leaf = new GoalTreasure(dungeon);
+    		break;
+    	}
+    	return leaf;
+    	//return new GoalLeaf(goal, dungeon);
     }
 
     private void loadEntity(Dungeon dungeon, JSONObject json) {

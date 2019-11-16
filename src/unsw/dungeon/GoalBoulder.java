@@ -18,7 +18,7 @@ public class GoalBoulder implements GoalComponent{
 
 	@Override
 	public String getInfo() {
-		return "(turn on all the floor switches)";
+		return "(turn on all floor switches)";
 	}
 
 	@Override
