@@ -18,16 +18,25 @@ public class GoalEnemy implements GoalComponent, ObserverGoal{
 		
 	}
 
+	/**
+	 * get goal info
+	 */
 	@Override
 	public String getInfo() {
 		return "(kill all enemies)";
 	}
 
+	/**
+	 * get if goal is finished
+	 */
 	@Override
 	public boolean checkgoals() {
 		return this.total == this.dead;
 	}
 
+	/**
+	 * update observer
+	 */
 	@Override
 	public void update(Entity entity) {
 		if (entity instanceof Enemy) {

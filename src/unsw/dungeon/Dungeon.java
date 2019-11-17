@@ -29,34 +29,64 @@ public class Dungeon {
         this.player = null;
     }
     
+    /**
+     * add goal to dungeon
+     * @param goal
+     */
     public void addGoal(GoalComponent goal) {
     	this.goal = goal;
     }
     
+    /**
+     * check dungeon goals
+     * @return
+     */
     public boolean checkgoal() {
     	return goal.checkgoals();
     }
 
+    /**
+     * get width of dungeon
+     * @return
+     */
     public int getWidth() {
         return width;
     }
-
+    
+    /**
+     * get height of dungeon
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * get player of dungeon
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
-
+    
+    /**
+     * set player to the dungeon
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
-
+    
+    /**
+     * add entity to dungeon
+     */
     public void addEntity(Entity entity) {
         entities.add(entity);
     }
     
+    /**
+     * set enemy observer
+     */
     public void setEnemyObserver() {
     	for (Entity e : entities) {
     		if(e instanceof Enemy) {
@@ -65,6 +95,9 @@ public class Dungeon {
     	}
     }
     
+    /**
+     * set door observer
+     */
     public void setDoorObserver() {
     	for (Entity e : entities) {
     		if(e instanceof Door) {
@@ -73,6 +106,12 @@ public class Dungeon {
     	}
     }
     
+    /**
+     * find entity at (x, y)
+     * @param x
+     * @param y
+     * @return
+     */
     public Entity findEntity(int x, int y) {
     	for (Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && !(e instanceof Player) && !(e instanceof FloorSwitch)) {
@@ -90,6 +129,12 @@ public class Dungeon {
     	}
     }
     
+    /**
+     * find switch in the dungeon
+     * @param x
+     * @param y
+     * @return
+     */
     public Entity findSwitch(int x, int y) {
     	for(Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && e instanceof FloorSwitch) {
@@ -99,6 +144,12 @@ public class Dungeon {
     	return null;
     }
     
+    /**
+     * find boulder in the dungeon
+     * @param x
+     * @param y
+     * @return
+     */
     public Entity findBoulder(int x, int y) {
     	for(Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && e instanceof Boulder) {
@@ -108,6 +159,9 @@ public class Dungeon {
     	return null;
     }
     
+    /**
+     * turn on switch 
+     */
     public void turnSwitch() {
     	for(Entity e : entities) {
     		if(e instanceof FloorSwitch) {
@@ -122,10 +176,18 @@ public class Dungeon {
     	}
     }
     
+    /**
+     * remove entity in dungeon
+     * @param entity
+     */
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
     }
     
+    /**
+     * check if dungeon has switch
+     * @return
+     */
     public boolean hasSwitch() {
     	for(Entity e : entities) {
     		if(e instanceof FloorSwitch) {
@@ -135,6 +197,10 @@ public class Dungeon {
     	return false;
     }
     
+    /**
+     * check if switch is on
+     * @return
+     */
     public boolean checkSwitch() {
     	for(Entity e : entities) {
     		if(e instanceof FloorSwitch) {
@@ -147,6 +213,12 @@ public class Dungeon {
     	return hasSwitch();
     }
     
+    /**
+     * find player in the dungeon
+     * @param x
+     * @param y
+     * @return
+     */
     public Entity findPlayer(int x, int y) {
     	for(Entity e : entities) {
     		if (e.getX() == x && e.getY() == y && e instanceof Player) {
@@ -156,6 +228,10 @@ public class Dungeon {
     	return null;
     }
     
+    /**
+     * check if player is on exit
+     * @return
+     */
     public boolean checkExit() {
     	for(Entity e : entities) {
     		if (e instanceof Exit) {
@@ -167,6 +243,14 @@ public class Dungeon {
     	return false;
     }
     
+    /**
+     * check if entity can go there
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @return
+     */
     public boolean canGoThere(int x1, int y1, int x2, int y2) {
     	Entity entity1 = findEntity(x1, y1);
     	Entity entity2 = findEntity(x2, y2);
@@ -182,7 +266,9 @@ public class Dungeon {
 		return true;
 	}
     
-    
+    /**
+     * run portal
+     */
     public void checkPortal() {
     	for(Entity e : entities) {
     		if(e instanceof Portal) {
@@ -192,6 +278,9 @@ public class Dungeon {
     	}
     }
     
+    /**
+     * find portal in dungeon
+     */
     public Portal findPortal(int x, int y, int id) {
     	for(Entity e : entities) {
     		if(e instanceof Portal) {
@@ -203,6 +292,10 @@ public class Dungeon {
     	return null;
     }
     
+    /**
+     * get all entities in dungeon
+     * @return
+     */
     public List<Entity> getEntities() {
 		return entities;
 	}
@@ -210,7 +303,13 @@ public class Dungeon {
 	public void setEntities(List<Entity> entities) {
 		this.entities = entities;
 	}
-
+	
+	/**
+	 * check if entity can go there
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean canGoThere(int x, int y) {
     	Entity entity1 = findEntity(x, y);
     	if(entity1 instanceof Wall) {
@@ -223,6 +322,12 @@ public class Dungeon {
     	return true;
     }
 	
+	/**
+	 * check if enemy can go there
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean enemyCanGoThere(int x, int y) {
     	Entity entity1 = findEntity(x, y);
     	if(entity1 instanceof Wall) {
@@ -236,8 +341,10 @@ public class Dungeon {
     }
 	
 	
-	
-
+	/**
+	 * check if dungeon has enemy
+	 * @return
+	 */
     public boolean hasEnemy() {
     	for(Entity e : entities) {
     		if (e instanceof Enemy) {
@@ -246,15 +353,11 @@ public class Dungeon {
     	}
     	return false;
     }
-	public Entity findPortal(int x, int y) {
-		for(Entity e : entities) {
-			if ((e.getX() != x || e.getY() != y) && e instanceof Portal) {
-				return e;
-			}
-		}
-		return null;
-	}
-
+    
+    /**
+     * check if dungeon has treasure
+     * @return
+     */
 	public boolean hasTreasure() {
 		for(Entity e : entities) {
 			if ( e instanceof Treasure) {
@@ -264,6 +367,10 @@ public class Dungeon {
 		return false;
 	}
 	
+	/**
+	 * get exit in the dungeon
+	 * @return
+	 */
 	public Exit getExit() {
 		for(Entity e : this.entities) {
 			if (e instanceof Exit) {
@@ -273,6 +380,10 @@ public class Dungeon {
 		return null;
 	}
 	
+	/**
+	 * count enemy in the dungeon
+	 * @return
+	 */
 	public int getEnemyCount() {
 		int count = 0;
 		for(Entity e : this.entities) {
@@ -283,6 +394,10 @@ public class Dungeon {
 		return count;
 	}
 	
+	/**
+	 * count treasure in the dungeon
+	 * @return
+	 */
 	public int getTreasureCount() {
 		int count = 0;
 		for(Entity e : this.entities) {
@@ -293,7 +408,8 @@ public class Dungeon {
 		return count;
 	}
 	
-	public int getBoulderCount() {
+	/*
+	public int getBoffffulderCount() {
 		int count = 0;
 		for(Entity e : this.entities) {
 			if (e instanceof Boulder) {
@@ -302,7 +418,12 @@ public class Dungeon {
 		}
 		return count;
 	}
+	*/
 	
+	/**
+	 * set Observer for Enemy Goal
+	 * @param goal
+	 */
 	public void setObserverEnemyGoal(GoalEnemy goal) {
 		for (Entity e : entities) {
 			if (e instanceof Enemy) {
@@ -313,6 +434,10 @@ public class Dungeon {
 		
 	}
 	
+	/**
+	 * set obseerver for treasure goal
+	 * @param goal
+	 */
 	public void setObserverTreasureGoal(GoalTreasure goal) {
 		for (Entity e : entities) {
 			if (e instanceof Treasure) {
@@ -322,6 +447,10 @@ public class Dungeon {
 		
 	}
 	
+	/**
+	 * set observer for boulder goal
+	 * @param goal
+	 */
 	public void setObserverBoulderGoal(GoalBoulder goal) {
 		for (Entity e : entities) {
 			if (e instanceof FloorSwitch) {
@@ -331,6 +460,10 @@ public class Dungeon {
 		
 	}
 	
+	/**
+	 * get goal info of dungeon
+	 * @return
+	 */
 	public String getGameGuide() {
 		return goal.getInfo();
 	}

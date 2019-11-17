@@ -8,6 +8,9 @@ public class CanOpenState implements StateCanOpen {
 		this.door = door;
 	}
 
+	/**
+	 * return true if door can open
+	 */
 	@Override
 	public boolean openable() {
 		return true;

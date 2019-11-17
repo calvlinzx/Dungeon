@@ -10,6 +10,9 @@ public class PotionThread2 extends Thread {
 		this.entity = entity;
 	}
 
+	/**
+	 * run thread
+	 */
 	@Override
 	public void run() {
 		while(((Invincibility) entity).getIsValid() && ! player.battleEnemy()) {

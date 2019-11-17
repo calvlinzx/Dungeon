@@ -23,19 +23,35 @@ public class Entity {
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
     }
-
+    
+    /**
+     * get IntegerProperty of x
+     * @return
+     */
     public IntegerProperty x() {
         return x;
     }
-
+    
+    /**
+     * get IntegerProperty of y 
+     * @return
+     */
     public IntegerProperty y() {
         return y;
     }
-
+    
+    /**
+     * get y
+     * @return
+     */
     public int getY() {
         return y().get();
     }
 
+    /**
+     * get y
+     * @return
+     */
     public int getX() {
         return x().get();
     }

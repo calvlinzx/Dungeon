@@ -9,15 +9,25 @@ public class Invincibility extends Entity{
 		isValid = true;
 	}
 	
+	/**
+	 * activate potion
+	 */
 	public void active() {
 		this.isValid = false;
 	}
 	
+	/**
+	 * get valid or not
+	 * @return
+	 */
 	public boolean getIsValid() {
 		return isValid;
 	}
 	 
-	// modified
+	/**
+	 * use potion by player
+	 * @param player
+	 */
 	public void use(Player player) {
 		PotionThread p1 = new PotionThread(player, this);
 		PotionThread2 p2 = new PotionThread2(player, this);

@@ -15,6 +15,9 @@ public class GoalComposite implements GoalComponent {
 		this.subgoals = new ArrayList<GoalComponent>();
 	}
 	
+	/**
+	 * check if goals are finished
+	 */
 	public boolean checkgoals() {
 		if (goal.equals("main goal")) {
 			for (GoalComponent g : subgoals) {
@@ -41,6 +44,9 @@ public class GoalComposite implements GoalComponent {
 		return true;
 	}
 
+	/**
+	 * add subgoal
+	 */
 	@Override
 	public void add(GoalComponent component) {
 		if (! subgoals.contains(component)) {
@@ -48,6 +54,9 @@ public class GoalComposite implements GoalComponent {
 		}		
 	}
 
+	/**
+	 * get goal info
+	 */
 	@Override
 	public String getInfo() {
 		String ret = "[";

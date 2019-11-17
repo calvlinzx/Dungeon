@@ -12,14 +12,19 @@ public class GoalExit implements GoalComponent{
 		this.exit = exit;
 	}
 
+	/**
+	 * get goal info
+	 */
 	@Override
 	public String getInfo() {
 		return "(getting to exit)";
 	}
 
+	/**
+	 * get if goal is finished
+	 */
 	@Override
 	public boolean checkgoals() {
-		// to be changed later
 		return player.getX() == exit.getX() && player.getY() == exit.getY();
 	}
 

@@ -12,18 +12,32 @@ public class FloorSwitch extends Entity implements SubjectGoal{
 		this.observers = new ArrayList<ObserverGoal>();
 	}
 	
+	/**
+	 * turn on switch
+	 */
 	public void turnOn() {
 		this.fswitch = true;
 	}
 	
+	/**
+	 * turn off switch
+	 */
 	public void turnOff() {
 		this.fswitch = false;
 	}
 	
+	/**
+	 * check if switch is on
+	 * @return
+	 */
 	public boolean checkIsOn() {
 		return fswitch;
 	}
-
+	
+	/**
+	 * update observer
+	 * @param ison
+	 */
 	public void update(boolean ison) {
 		if(ison) {
 			turnOn();
@@ -32,20 +46,28 @@ public class FloorSwitch extends Entity implements SubjectGoal{
 		}
 	}
 	
+	/**
+	 * register observer for goal
+	 */
 	@Override
 	public void registerGoalObserver(ObserverGoal o) {
 		observers.add(o);
 	}
-
+	
+	/**
+	 * remove observer for goal
+	 */
 	@Override
 	public void removeGoalObserver(ObserverGoal o) {
 		// TODO Auto-generated method stub
 		observers.remove(o);
 	}
-
+	
+	/**
+	 * notify goal subject
+	 */
 	@Override
 	public void notifyGoal() {
-		//System.out.println("!!!");
 		for (ObserverGoal o : observers) {
 			o.update(this);
 		}

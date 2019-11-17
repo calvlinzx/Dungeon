@@ -18,16 +18,25 @@ public class GoalTreasure implements GoalComponent, ObserverGoal{
 		
 	}
 
+	/**
+	 * get goal info
+	 */
 	@Override
 	public String getInfo() {
 		return "(pick up all treasure)";
 	}
 
+	/**
+	 * check if goal is finished
+	 */
 	@Override
 	public boolean checkgoals() {
 		return this.total == this.collected;
 	}
 
+	/**
+	 * update observer
+	 */
 	@Override
 	public void update(Entity entity) {
 		if (entity instanceof Treasure) {

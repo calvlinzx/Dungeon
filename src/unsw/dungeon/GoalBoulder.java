@@ -19,18 +19,26 @@ public class GoalBoulder implements GoalComponent, ObserverGoal{
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * get info of goal
+	 */
 	@Override
 	public String getInfo() {
 		return "(turn on all floor switches)";
 	}
-
+	
+	/**
+	 * check if goal is done
+	 */
 	@Override
 	public boolean checkgoals() {
 		//return this.pushed == this.total;
 		return dungeon.checkSwitch();
 	}
 
+	/**
+	 * update observer
+	 */
 	@Override
 	public void update(Entity entity) {
 		if (entity instanceof FloorSwitch) {

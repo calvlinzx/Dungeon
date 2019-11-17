@@ -4,5 +4,4 @@ public interface ObserverDoor {
 	
 	void update(boolean hasKey);
 
-
 }

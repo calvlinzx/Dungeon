@@ -15,14 +15,17 @@ public class Door extends Entity implements ObserverDoor{
 		this.id = id;
 	}
 	
+	/**
+	 * get door id
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	/**
+	 * @param player has key or not
+	 * update 
+	 */
 	@Override
 	public void update(boolean hasKey) {
 		if(hasKey) {
@@ -31,17 +34,27 @@ public class Door extends Entity implements ObserverDoor{
 			doorCannotOpen();
 		}
 	}
-
+	
+	/**
+	 * set the state to can not open
+	 */
 	private void doorCannotOpen() {
-		System.out.println("cannot open");
+		//System.out.println("cannot open");
 		state = cannotOpen;
 	}
 
+	/**
+	 * set state to can open
+	 */
 	public void doorCanOpen() {
-		System.out.println("can open");
+		//System.out.println("can open");
 		state = canOpen;
 	}
 	
+	/**
+	 * check if can open
+	 * @return boolean
+	 */
 	public boolean open() {
 		return state.openable();
 	}

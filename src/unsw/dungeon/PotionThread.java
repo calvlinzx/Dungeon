@@ -9,7 +9,10 @@ public class PotionThread extends Thread {
 		this.player = player;
 		this.entity = entity;
 	}
-
+	
+	/**
+	 * run thread
+	 */
 	@Override
 	public void run() {
 		try {

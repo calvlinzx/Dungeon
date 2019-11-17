@@ -28,8 +28,8 @@ class PortalTest {
 	
 	@Test
 	void PortalCanBeStepOn() {
-		assertTrue(dungeon.findPortal(1, 1) != null);
-		assertTrue(dungeon.findPortal(3, 3) != null);
+		assertTrue(dungeon.findPortal(1, 1, 0) != null);
+		assertTrue(dungeon.findPortal(3, 3, 0) != null);
 		assertTrue(dungeon.canGoThere(1, 1));
 		assertTrue(dungeon.canGoThere(3, 3));
 		System.out.println("PortalCanBeStepOn passed");
