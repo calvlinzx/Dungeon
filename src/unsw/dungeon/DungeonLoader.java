@@ -72,10 +72,10 @@ public abstract class DungeonLoader {
     			subcomposite.add(makeLeaf(firstLine, dungeon));
     		}else {
     			if (firstLine.equals("AND")) {
-        			JSONArray andsubs = json.getJSONArray("subgoals");
+        			JSONArray andsubs = goal.getJSONArray("subgoals");
         			subcomposite.add(makeAndGoal(dungeon, andsubs));
         		}else if (firstLine.equals("OR")) {
-        			JSONArray orsubs = json.getJSONArray("subgoals");
+        			JSONArray orsubs = goal.getJSONArray("subgoals");
         			subcomposite.add(makeOrGoal(dungeon, orsubs));
         		}
     		}
@@ -92,10 +92,10 @@ public abstract class DungeonLoader {
     			subcomposite.add(makeLeaf(firstLine, dungeon));
     		}else {
     			if (firstLine.equals("AND")) {
-        			JSONArray andsubs = json.getJSONArray("subgoals");
+        			JSONArray andsubs = goal.getJSONArray("subgoals");
         			subcomposite.add(makeAndGoal(dungeon, andsubs));
         		}else if (firstLine.equals("OR")) {
-        			JSONArray orsubs = json.getJSONArray("subgoals");
+        			JSONArray orsubs = goal.getJSONArray("subgoals");
         			subcomposite.add(makeOrGoal(dungeon, orsubs));
         		}
     		}

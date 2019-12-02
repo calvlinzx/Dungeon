@@ -15,9 +15,6 @@ public class GoalComposite implements GoalComponent {
 		this.subgoals = new ArrayList<GoalComponent>();
 	}
 	
-	/**
-	 * check if goals are finished
-	 */
 	public boolean checkgoals() {
 		if (goal.equals("main goal")) {
 			for (GoalComponent g : subgoals) {
@@ -44,38 +41,58 @@ public class GoalComposite implements GoalComponent {
 		return true;
 	}
 
-	/**
-	 * add subgoal
-	 */
 	@Override
 	public void add(GoalComponent component) {
 		if (! subgoals.contains(component)) {
 			this.subgoals.add(component);
 		}		
 	}
+	
+	public String getGoal() {
+		return this.goal;
+	}
+	
+	public List<GoalComponent> getSubgoals() {
+		return this.subgoals;
+	}
 
-	/**
-	 * get goal info
-	 */
 	@Override
 	public String getInfo() {
 		String ret = "[";
 		if (goal.equals("main goal")) {
 			for (GoalComponent g : subgoals) {
-				ret += g.getInfo();
+				GoalComposite mainsub = null;
+				if(g instanceof GoalComposite) {
+					mainsub = (GoalComposite) g;
+				}
+				if(mainsub != null && mainsub.getGoal().equals("or")) {
+					for (GoalComponent sg : mainsub.getSubgoals()) {
+						ret += sg.getInfo() + "\nor\n";
+					}
+					ret = ret.substring(0, ret.length()-4);
+					ret += "]";
+				}else if(mainsub != null && mainsub.getGoal().equals("and")) {
+					for (GoalComponent sg : mainsub.getSubgoals()) {
+						ret += sg.getInfo() + "\nand\n";
+					}
+					ret = ret.substring(0, ret.length()-5);
+					ret += "]";
+				}else {
+					ret = g.getInfo();
+				}
+				
 			}
-			ret = ret.substring(1);
 		}
 		if (goal.equals("and")) {
 			for (GoalComponent g : subgoals) {
-				ret += g.getInfo() + " and\n";
+				ret += g.getInfo() + " and ";
 			}
 			ret = ret.substring(0, ret.length()-5);
 			ret += "]";
 		}
 		if (goal.equals("or")) {
 			for (GoalComponent g : subgoals) {
-				ret += g.getInfo() + " or\n";
+				ret += g.getInfo() + " or ";
 			}
 			ret = ret.substring(0, ret.length()-4);
 			ret += "]";

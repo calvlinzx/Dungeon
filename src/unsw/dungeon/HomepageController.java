@@ -51,7 +51,7 @@ public class HomepageController {
 	
 	@FXML
 	void go2level8(ActionEvent event) throws IOException {
-		go2newScene("advanced.json");
+		go2newScene("test.json");
 	}
 	
 	private void go2newScene(String file) throws IOException {
