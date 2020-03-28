@@ -28,30 +28,6 @@ Final milestone: 5PM Sunday Week 9 (Demonstration: Week 10 Lab)
 
 You have received a request from a client for an application for the playing of dungeon-style puzzles. With a partner from your lab class, you will follow an agile development process to design and implement a desktop Java application that satisfies the requirements of the client (see below). The final piece of software you deliver is expected to be of professional quality, user-friendly, and demonstrate the knowledge and skills you have acquired in this course.
 
-## Partner
-
-Your first step in this project will be to find a partner. You will do this under the guidance of your tutor in the week 3 lab. You may work as an individual if you wish, but your project will be judged by the same criteria as if you had done it with a partner. If class sizes necessitate, groups of 3 will be allowed.
-
-After resolving who you will be working with, you should follow the instructions in the week 3 lab for registering your group. A repository on GitLab will be created for you at the end of week 3 based on the group you create, so you **must** create one by then.
-
-Once created, your repository will be available here (replace *GROUP_NAME* with your group's name):
-
-https://gitlab.cse.unsw.edu.au/COMP2511/19T3/GROUP_NAME
-
-## Project setup
-
-**NOTE**: For the first milestone, it is not necessary to set up the project in Eclipse.
-
-Because this project uses JavaFX, it requires some additional setup steps in Eclipse. It's relatively straightforward if you're using a CSE computer, but if you're using your own computer you will need to download an alternate JDK.
-
-0. **(Only necessary for non-CSE computers)** Go [here](https://www.azul.com/downloads/zulu-community/?&package=jdk-fx) and download the Java 11 Zulu JDK FX for your OS. Unzip it once it finishes downloading.
-1. In Eclipse, import this project as normal. You should see an exclamation mark on the project indicating an error.
-2. Go to **Window -> Preferences**. On the left, under **Java** select **Installed JREs** then click **Add**. Ensure **Standard VM** is selected and click **Next**.
-3. * **(On CSE computers)** Enter exactly `/home/cs2511/jdk-jfx` into **JRE Home**. The other fields should fill in automatically.
-   * **(On non-CSE computers)** Click **Directory** and select the directory of the Zulu JDK you unzipped in step 1. Change **JRE name** to exactly `jdk-jfx`.
-4. Click **Finish** then **Apply and Close**
-
-If these steps worked, the project should no longer have the exclamation mark on it and you should be able to run the starter code.
 
 ## Preliminary client requirements
 
@@ -201,39 +177,6 @@ In cases where the client has not been explicit in their requirements, you will 
 You are expected to use git appropriately by committing regularly with meaningful commit messages and using feature branches to manage significant changes. Similarly, you should use the task board to coordinate work with your partner. You will need to take the principles you learnt from COMP1531 and apply them here.
 
 While it is up to you how to divide the work between you and your partner, both of you are expected to contribute code. Just creating diagrams and documentation is not sufficient contribution. Both members of a pair *generally* receive the same mark, but if there is a significant imbalance in the amount of work done, the total mark may be scaled to match actual contribution.
-
-## Hints
-
-* The first two milestones do not require a working UI. First determine how you are going to model a dungeon and its entities before considering the UI. A well designed back-end will require minimal change to connect to the UI.
-* Up until the JavaFX has been covered, you may find some of the starter code to be hard to understand. For the backend, you can either ignore the starter code completely, or just look at the `Dungeon`, `Entity`, `Player` and `Wall` classes.
-* The starter code uses the observer pattern to ensure the frontend and backend are in a consistent state and that they are not tightly coupled. It would be advisable to do the same for the changes you will make.
-* The majority of marks available (see below) are for having a well designed application that meets the requirements. Avoid adding extra complexity and extensions till you have something that meets the most basic requirements.
-
-## Submission
-
-### Milestone 1
-
-You should have all your user stories entered into the issue board on your GitLab repository. You may continue to use the board between the deadline and your tutor's assessment, but they will be looking at the dates issues were modified to make sure you did the work that was required of you prior to the deadline.
-
-### Milestone 2
-
-Submit the contents of your GitLab repository with the following command:
-
-```bash
-$ 2511 submit milestone2
-```
-
-Your UML class diagram should be a PDF file at the root of your repository named `design.pdf`.
-
-### Milestone 3
-
-Submit the contents of your GitLab repository with the following command:
-
-```bash
-$ 2511 submit milestone3
-```
-
-You will demonstrate your application to your tutor in Week 10. You may be asked to justify your design decisions and explain how you worked with your partner.
 
 ## Marking criteria
 
