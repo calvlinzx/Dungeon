@@ -18,7 +18,7 @@ Milestone 2: 5PM Sunday Week 7 (Feedback: Week 8 Lab)
 
 Final milestone: 5PM Sunday Week 9 (Demonstration: Week 10 Lab)
 
-**NOTE:** There is **NO** provision for late submissions with a late penalty. Not submitting by the deadline is considered non-submission.
+
 
 ## Value: 25 marks
 
@@ -206,7 +206,6 @@ Below is a *rough* guide on how you will be assessed for each milestone.
 |              | 2    | Clear design and diagrams with partial adherence to design principles and patterns                |
 |              | 3    | Clear design and diagrams fully adhering to design principles and patterns and conforming to code |
 
-Marks will be deducted for poor git and GitLab usage. For example, meaningless commit messages, large commits, issue board out of date, etc.
 
 ### Milestone 3
 
@@ -229,7 +228,6 @@ Marks will be deducted for poor git and GitLab usage. For example, meaningless c
 |              | 1    | One extension that represents some technical consideration                                        |
 |              | 2    | Multiple extensions that represent some technical as well as design and user interaction consideration |
 
-Marks will be deducted for poor git and GitLab usage. For example, meaningless commit messages, large commits, issue board out of date, etc.
 
 [player]:        images/human_new.png
 [wall]:          images/brick_brown_0.png
